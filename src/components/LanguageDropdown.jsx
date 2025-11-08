@@ -11,9 +11,9 @@ export default function LanguageDropdown() {
 
   const currentLang = localStorage.getItem("lang") || "oz";
   const [title, setTitle] = useState(
-    currentLang === "uz" ? "Ўзбекча" :
+    currentLang === "uz" ? "Ozbekcha" :
       currentLang === "ru" ? "Русский" :
-        "Ozbekcha"
+        "Ўзбекча"
   );
 
   const handleClickOutside = (e) => {
@@ -53,7 +53,7 @@ export default function LanguageDropdown() {
           <ul className="py-2 text-sm">
             <li
               className="px-4 py-2 cursor-pointer hover:text-[#00A2DE]"
-              onClick={() => changeLanguage("uz", "Ўзбекча")}
+              onClick={() => changeLanguage("oz", "Ўзбекча")}
             >
               Ўзбекча
             </li>
@@ -65,7 +65,7 @@ export default function LanguageDropdown() {
             </li>
             <li
               className="px-4 py-2 cursor-pointer hover:text-[#00A2DE]"
-              onClick={() => changeLanguage("oz", "Ozbekcha")}
+              onClick={() => changeLanguage("uz", "Ozbekcha")}
             >
               Ozbekcha
             </li>

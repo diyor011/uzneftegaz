@@ -3,44 +3,119 @@
     {
       "title": "Biz haqimizda",
       "items": [
-        { "label": "Rahbariyat", "path": "/about/leadership" },
-        { "label": "Tarkibiy bo‘limlar", "path": "/about/departments" },
-        { "label": "Faxriy xodimlar", "path": "/about/honorary-staff" },
-        { "label": "Me’yoriy hujjatlar", "path": "/about/documents" },
-        { "label": "Bo‘sh ish o‘rinlari", "path": "/about/vacancies" }
+        {
+          "label": "Rahbariyat",
+          "path": "/about/leadership"
+        },
+        {
+          "label": "Tarkibiy bo‘limlar",
+          "path": "/about/departments"
+        },
+        {
+          "label": "Faxriy xodimlar",
+          "path": "/about/honorary-staff"
+        },
+        {
+          "label": "Me’yoriy hujjatlar",
+          "path": "/about/documents"
+        },
+        {
+          "label": "Bo‘sh ish o‘rinlari",
+          "path": "/about/vacancies"
+        }
       ]
     },
     {
       "title": "Korrupsiyaga qarshi",
       "items": [
-        { "label": "Me’yoriy hujjatlar", "path": "/anti-corruption/documents" },
-        { "label": "Aloqa kanallari", "path": "/anti-corruption/contacts" }
+        {
+          "label": "Me’yoriy hujjatlar",
+          "path": "/anti-corruption/documents"
+        },
+        {
+          "label": "Aloqa kanallari",
+          "path": "/anti-corruption/contacts"
+        }
       ]
     },
     {
       "title": "Yoshlar siyosati",
       "items": [
-        { "label": "Yangiliklar", "path": "/youth/news" },
-        { "label": "Me’yoriy hujjatlar", "path": "/youth/documents" },
-        { "label": "Sport va madaniyat", "path": "/youth/sport-culture" },
-        { "label": "Yoshlar markazi yangiliklari", "path": "/youth/center-news" }
+        {
+          "label": "Yangiliklar",
+          "path": "/youth/news"
+        },
+        {
+          "label": "Me’yoriy hujjatlar",
+          "path": "/youth/documents"
+        },
+        {
+          "label": "Sport va madaniyat",
+          "path": "/youth/sport-culture"
+        },
+        {
+          "label": "Yoshlar markazi yangiliklari",
+          "path": "/youth/center-news"
+        }
       ]
     },
     {
       "title": "Xotin-qizlar",
       "items": [
-        { "label": "Yangiliklar", "path": "/women/news" },
-        { "label": "Gender tengligi", "path": "/women/gender-equality" },
-        { "label": "Hisobotlar", "path": "/women/reports" }
+        {
+          "label": "Yangiliklar",
+          "path": "/women/news"
+        },
+        {
+          "label": "Gender tengligi",
+          "path": "/women/gender-equality"
+        },
+        {
+          "label": "Hisobotlar",
+          "path": "/women/reports"
+        }
       ]
     },
     {
       "title": "Yangiliklar",
       "items": [
-        { "label": "Yangiliklar", "path": "/news" },
-        { "label": "Matbuot xizmati", "path": "/news/press" },
-        { "label": "Hisobot va rejalar", "path": "/news/plans" }
+        {
+          "label": "Yangiliklar",
+          "path": "/news"
+        },
+        {
+          "label": "Matbuot xizmati",
+          "path": "/news/press"
+        },
+        {
+          "label": "Hisobot va rejalar",
+          "path": "/news/plans"
+        }
       ]
     }
-  ]
+  ],
+  "about": {
+      "news": "Yangiliklar",
+    "title": "Biz haqimizda",
+    "leadership": "Rahbariyat",
+    "departments": "Tarkibiy bo‘limlar",
+    "honoraryStaff": "Faxriy xodimlar",
+    "documents": "Normativ hujjatlar",
+    "vacancies": "Bo‘sh ish o‘rinlari",
+    "vacanciessalary": "Maosh",
+    "vacanciesrequirements": "Talablar",
+    "vacanciesappeal": "  Murojaat qilish muddati",
+    "vacanciesBtn": " Ariza yuborish",
+    "honoraryStaffgrade": "Baho",
+    "honoraryStaffyear": "Yil",
+    "honoraryStaffproject": "Loyiha",
+     "vacanciesModalResume": "Rezume",
+    "vacanciesModalVacancyName": "Vakansiya nomi",
+    "vacanciesModalDescription": "Ma'lumotlaringizni to'ldiring va rezumeingizni yuklang",
+    "vacanciesModalSendResume": "Rezume yuborish",
+    "vacanciesModalApply": "Vakansiyalarga ariza topshirish",
+    "vacanciesModalCloseBtn": "Bekor qilish",
+    "vacanciesInputUpload": "Faylni tanlash uchun bosing",
+        "vacanciesExamplePosition": "Masalan: buxgalter"
+  }
 }

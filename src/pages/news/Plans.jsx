@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Users, Award, Briefcase, GraduationCap, Globe } from 'lucide-react';
+import logo from "../../assets/minLogo.png";
 
 export default function PlansReportsPage() {
   const [activeYear, setActiveYear] = useState('2025');
@@ -89,19 +90,18 @@ export default function PlansReportsPage() {
   const currentPlans = activeYear === '2025' ? plans2025 : plans2024;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-800 mb-4">
-            Rejalar va Hisobotlar
-          </h1>
-          <p className="text-xl text-gray-600">
-            Yillik tadbirlar va faoliyat rejalari
-          </p>
-        </div>
-
+    <div className="min-h-screen bg-gray-50 py-12 max-w-[90%] mx-auto ">
+         
+         <div
+                className="flex items-center gap-2 mt-8
+                                    mb-12    "
+              >
+                <img src={logo} alt="" />
+                <h2 className="text-4xl font-bold  text-info duration-300">
+                  Hisobot<span className="text-[#EE7427]"> va Rejalar</span>{" "}
+                </h2>
+              </div>
+      
         {/* Year Selector */}
         <div className="flex justify-center gap-4 mb-12">
           <button
@@ -168,7 +168,6 @@ export default function PlansReportsPage() {
         </div>
 
     
-      </div>
     </div>
   );
 }

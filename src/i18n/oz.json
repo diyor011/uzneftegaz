@@ -3,44 +3,120 @@
     {
       "title": "Биз ҳақимизда",
       "items": [
-        { "label": "Раҳбарият", "path": "/about/leadership" },
-        { "label": "Таркибий бўлимлар", "path": "/about/departments" },
-        { "label": "Фахрий ходимлар", "path": "/about/honorary-staff" },
-        { "label": "Меъёрий ҳужжатлар", "path": "/about/documents" },
-        { "label": "Бўш иш ўринлари", "path": "/about/vacancies" }
+        {
+          "label": "Раҳбарият",
+          "path": "/about/leadership"
+        },
+        {
+          "label": "Таркибий бўлимлар",
+          "path": "/about/departments"
+        },
+        {
+          "label": "Фахрий ходимлар",
+          "path": "/about/honorary-staff"
+        },
+        {
+          "label": "Меъёрий ҳужжатлар",
+          "path": "/about/documents"
+        },
+        {
+          "label": "Бўш иш ўринлари",
+          "path": "/about/vacancies"
+        }
       ]
     },
     {
       "title": "Коррупцияга қарши",
       "items": [
-        { "label": "Меъёрий ҳужжатлар", "path": "/anti-corruption/documents" },
-        { "label": "Алоқа каналлари", "path": "/anti-corruption/contacts" }
+        {
+          "label": "Меъёрий ҳужжатлар",
+          "path": "/anti-corruption/documents"
+        },
+        {
+          "label": "Алоқа каналлари",
+          "path": "/anti-corruption/contacts"
+        }
       ]
     },
     {
       "title": "Ёшлар сиёсати",
       "items": [
-        { "label": "Янгиликлар", "path": "/youth/news" },
-        { "label": "Меъёрий ҳужжатлар", "path": "/youth/documents" },
-        { "label": "Спорт ва маданият", "path": "/youth/sport-culture" },
-        { "label": "Ёшлар маркази янгиликлари", "path": "/youth/center-news" }
+        {
+          "label": "Янгиликлар",
+          "path": "/youth/news"
+        },
+        {
+          "label": "Меъёрий ҳужжатлар",
+          "path": "/youth/documents"
+        },
+        {
+          "label": "Спорт ва маданият",
+          "path": "/youth/sport-culture"
+        },
+        {
+          "label": "Ёшлар маркази янгиликлари",
+          "path": "/youth/center-news"
+        }
       ]
     },
     {
       "title": "Хотин-қизлар",
       "items": [
-        { "label": "Янгиликлар", "path": "/women/news" },
-        { "label": "Гендер тенглиги", "path": "/women/gender-equality" },
-        { "label": "Ҳисоботлар", "path": "/women/reports" }
+        {
+          "label": "Янгиликлар",
+          "path": "/women/news"
+        },
+        {
+          "label": "Гендер тенглиги",
+          "path": "/women/gender-equality"
+        },
+        {
+          "label": "Ҳисоботлар",
+          "path": "/women/reports"
+        }
       ]
     },
     {
       "title": "Янгиликлар",
       "items": [
-        { "label": "Янгиликлар", "path": "/news" },
-        { "label": "Матбуот хизмати", "path": "/news/press" },
-        { "label": "Ҳисобот ва режалар", "path": "/news/plans" }
+        {
+          "label": "Янгиликлар",
+          "path": "/news"
+        },
+        {
+          "label": "Матбуот хизмати",
+          "path": "/news/press"
+        },
+        {
+          "label": "Ҳисобот ва режалар",
+          "path": "/news/plans"
+        }
       ]
     }
-  ]
+  ],
+  "about": {
+    "title": "Биз ҳақимизда",
+    "news": "Янгиликлар",
+    "leadership": "Раҳбарият",
+    "departments": "Таркибий бўлимлар",
+    "honoraryStaff": "Фахрий ходимлар",
+    "documents": "Норматив ҳужжатлар",
+    "vacancies": "Бўш иш ўринлари",
+    "vacanciessalary": "Маош",
+    "vacanciesrequirements": "Талаблар",
+    "vacanciesappeal": "  Мурожат Килиш Муддати",
+    "vacanciesBtn": " Ариза юбориш",
+    "honoraryStaffgrade": "Баҳо",
+    "honoraryStaffyear": "Йил",
+    "honoraryStaffproject": "Лойиҳа",
+    "vacanciesModalResume": "Резюме",
+    "vacanciesModalVacancyName": "Название вакансии",
+    "vacanciesModalDescription": "Заполните свои данные и загрузите резюме",
+    "vacanciesModalSendResume": "Отправить резюме",
+    "vacanciesModalApply": "Подать заявку на вакансии",
+    "vacanciesModalCloseBtn": "Бекор килиш",
+    "vacanciesInputUpload": "Файлни танлаш учун босинг",
+    "vacanciesExamplePosition": "Масалан: бухгалтер",
+    "titleCatygory": "Хотин-қизлар"
+  }
 }

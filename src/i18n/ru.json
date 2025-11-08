@@ -3,44 +3,118 @@
     {
       "title": "О нас",
       "items": [
-        { "label": "Руководство", "path": "/about/leadership" },
-        { "label": "Отделы", "path": "/about/departments" },
-        { "label": "Почётные сотрудники", "path": "/about/honorary-staff" },
-        { "label": "Нормативные документы", "path": "/about/documents" },
-        { "label": "Вакансии", "path": "/about/vacancies" }
+        {
+          "label": "Руководство",
+          "path": "/about/leadership"
+        },
+        {
+          "label": "Отделы",
+          "path": "/about/departments"
+        },
+        {
+          "label": "Почётные сотрудники",
+          "path": "/about/honorary-staff"
+        },
+        {
+          "label": "Нормативные документы",
+          "path": "/about/documents"
+        },
+        {
+          "label": "Вакансии",
+          "path": "/about/vacancies"
+        }
       ]
     },
     {
       "title": "Против коррупции",
       "items": [
-        { "label": "Нормативные документы", "path": "/anti-corruption/documents" },
-        { "label": "Каналы связи", "path": "/anti-corruption/contacts" }
+        {
+          "label": "Нормативные документы",
+          "path": "/anti-corruption/documents"
+        },
+        {
+          "label": "Каналы связи",
+          "path": "/anti-corruption/contacts"
+        }
       ]
     },
     {
       "title": "Молодёжная политика",
       "items": [
-        { "label": "Новости", "path": "/youth/news" },
-        { "label": "Нормативные документы", "path": "/youth/documents" },
-        { "label": "Спорт и культура", "path": "/youth/sport-culture" },
-        { "label": "Новости молодёжного центра", "path": "/youth/center-news" }
+        {
+          "label": "Новости",
+          "path": "/youth/news"
+        },
+        {
+          "label": "Нормативные документы",
+          "path": "/youth/documents"
+        },
+        {
+          "label": "Спорт и культура",
+          "path": "/youth/sport-culture"
+        },
+        {
+          "label": "Новости молодёжного центра",
+          "path": "/youth/center-news"
+        }
       ]
     },
     {
       "title": "Женщины",
       "items": [
-        { "label": "Новости", "path": "/women/news" },
-        { "label": "Гендерное равенство", "path": "/women/gender-equality" },
-        { "label": "Отчёты", "path": "/women/reports" }
+        {
+          "label": "Новости",
+          "path": "/women/news"
+        },
+        {
+          "label": "Гендерное равенство",
+          "path": "/women/gender-equality"
+        },
+        {
+          "label": "Отчёты",
+          "path": "/women/reports"
+        }
       ]
     },
     {
       "title": "Новости",
       "items": [
-        { "label": "Новости", "path": "/news" },
-        { "label": "Пресс-служба", "path": "/news/press" },
-        { "label": "Отчёты и планы", "path": "/news/plans" }
+        {
+          "label": "Новости",
+          "path": "/news"
+        },
+        {
+          "label": "Пресс-служба",
+          "path": "/news/press"
+        },
+        {
+          "label": "Отчёты и планы",
+          "path": "/news/plans"
+        }
       ]
     }
-  ]
+  ],
+  "about": {
+       "news": "Новости",
+    "title": "О нас",
+    "leadership": "Руководство",
+    "departments": "Отделы",
+    "honoraryStaff": "Почётные сотрудники",
+    "documents": "Нормативные документы",
+    "vacancies": "Вакансии",
+    "vacanciessalary": "Зарплата",
+    "vacanciesrequirements": "Требования",
+    "vacanciesappeal": "Срок подачи заявок",
+    "vacanciesBtn": "Отправить заявку",
+    "honoraryStaffgrade": "Оценка",
+    "honoraryStaffyear": "Год",
+    "honoraryStaffproject": "Проект",
+    "vacanciesModalResume": "Резюме",
+    "vacanciesModalVacancyName": "Название вакансии",
+    "vacanciesModalDescription": "Заполните свои данные и загрузите резюме",
+    "vacanciesModalSendResume": "Отправить резюме",
+    "vacanciesModalApply": "Подать заявку на вакансии",
+    "vacanciesModalCloseBtn": "Отменить",
+    "vacanciesInputUpload": "Нажмите, чтобы выбрать файл",    "vacanciesExamplePosition": "Например: бухгалтер"
+  }
 }

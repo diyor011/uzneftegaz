@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, Users, FileText, Camera, Video, MapPin, Clock, Send } from 'lucide-react';
+import logo from "../../assets/minLogo.png";
 
 export default function PressServicePage() {
   const [activeTab, setActiveTab] = useState('about');
@@ -76,65 +77,36 @@ export default function PressServicePage() {
     }
   ];
 
-  const contacts = [
-    {
-      icon: Phone,
-      title: "Telefon",
-      info: "+998 71 111 22 33",
-      color: "from-blue-600 to-blue-800"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      info: "press@gov.uz",
-      color: "from-orange-500 to-orange-700"
-    },
-    {
-      icon: MapPin,
-      title: "Manzil",
-      info: "Toshkent sh., Amir Temur ko'chasi, 1-uy",
-      color: "from-blue-700 to-blue-900"
-    },
-    {
-      icon: Clock,
-      title: "Ish vaqti",
-      info: "Dush-Juma, 9:00-18:00",
-      color: "from-orange-600 to-orange-800"
-    }
-  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-orange-500">
+    <div className="min-h-screen mt-20 mx-auto max-w-[90%]">
       
-      {/* Hero Section */}
-      <div className="relative py-24 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6">
-            Matbuot xizmati
-          </h1>
-          <p className="text-2xl text-blue-50 max-w-3xl mx-auto">
-            Ommaviy axborot vositalari bilan hamkorlik va ma'lumot tarqatish
-          </p>
-        </div>
-      </div>
+      <div
+             className="flex items-center gap-2 mt-8
+                                 mb-12    "
+           >
+             <img src={logo} alt="" />
+             <h2 className="text-4xl font-bold  text-info duration-300">
+               Matbuot<span className="text-[#EE7427]">Xizmati</span>{" "}
+             </h2>
+           </div>
+   
 
       {/* Tabs */}
-      <div className="max-w-7xl mx-auto px-4 mb-8">
+      <div className="max-w-7xl mx-auto  mb-8">
         <div className="flex flex-wrap justify-center gap-4">
           {[
             { id: 'about', label: 'Biz haqimizda' },
             { id: 'team', label: 'Jamoa' },
             { id: 'services', label: 'Xizmatlar' },
-            { id: 'contact', label: 'Aloqa' }
           ].map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'bg-white text-blue-900 shadow-2xl scale-105'
-                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                  ? 'bg-info text-orange-400 shadow-2xl scale-105'
+                  : 'bg-orange-400 text-white hover:bg-white/30 backdrop-blur-sm'
               }`}
             >
               {tab.label}
@@ -143,7 +115,7 @@ export default function PressServicePage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 pb-16">
+      <div className="max-w-7xl mx-auto  pb-16">
         
         {/* About Section */}
         {activeTab === 'about' && (

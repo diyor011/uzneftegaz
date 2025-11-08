@@ -1,5 +1,6 @@
 import React from 'react'
 import { Calendar, Users, Award, Briefcase, GraduationCap, Globe } from 'lucide-react';
+import logo from "../../assets/minLogo.png";
 
 const Reports = () => {
       const plans = [
@@ -47,6 +48,17 @@ const Reports = () => {
  
     return (
         <div className='max-w-[90%] mx-auto mt-14'>
+              <div
+                    className="flex items-center gap-2 mt-8
+                                          mb-12    "
+                  >
+                    <img src={logo} alt="" />
+                    <h2 className="text-4xl font-bold  text-info duration-300">
+                      Hisobotlar <span className="text-[#EE7427]"></span>{" "}
+                    </h2>
+                  </div>
+
+
            <div className="grid md:grid-cols-2 gap-8">
           {plans.map((plan) => {
             const Icon = plan.icon;

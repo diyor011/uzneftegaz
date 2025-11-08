@@ -8,10 +8,10 @@ const Banner = () => {
 
     const getBanner = async () => {
         try {
-            const response = await fetch("http://localhost:8000/api/banner");
+            const response = await fetch("https://uzbekneftegaz-backend.onrender.com/api/banner");
             if (!response.ok) throw new Error(response.status);
             const json = await response.json();
-            setData(json);
+            setData(json.banners);
         } catch (err) {
             console.error("Banner fetch error:", err);
         }
@@ -43,13 +43,13 @@ const Banner = () => {
                     <div className="absolute inset-0">
                         {item.mediaType === "image" ? (
                             <img
-                                src={`http://localhost:8000/uploads/${item.file}`}
-                                alt={item.title[lang] || item.title.uz}
+                                src={`https://uzbekneftegaz-backend.onrender.com/uploads/banners/${item.file}`}
+                                alt={item.title['uz'] || item.title.uz}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
                             <video
-                                src={`http://localhost:8000/uploads/${item.file}`}
+                                src={`https://uzbekneftegaz-backend.onrender.com/uploads/banners/${item.file}`}
                                 autoPlay
                                 muted
                                 loop
@@ -85,8 +85,8 @@ const Banner = () => {
                         key={i}
                         onClick={() => setCurrent(i)}
                         className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${i === current
-                                ? "bg-white w-8 md:w-10"
-                                : "bg-white/50 hover:bg-white/75"
+                            ? "bg-white w-8 md:w-10"
+                            : "bg-white/50 hover:bg-white/75"
                             }`}
                         aria-label={`Go to slide ${i + 1}`}
                     />
