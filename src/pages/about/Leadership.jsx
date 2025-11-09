@@ -43,6 +43,7 @@ const Leadership = () => {
   }
   const { t } = useTranslation();
 
+  
 
   useEffect(() => {
     getProduct()

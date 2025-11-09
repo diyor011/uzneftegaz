@@ -19,6 +19,7 @@ const Vacancies = () => {
     if (selectedFile) {
       setFile(selectedFile);
       setFileName(selectedFile.name);
+      
     }
   };
 
