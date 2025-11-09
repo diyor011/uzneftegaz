@@ -21,7 +21,7 @@ const NewsCard = () => {
   const getProduct1 = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend.onrender.com/api/localNews`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/localNews`
       );
       const result = await response.json();
 
@@ -49,7 +49,7 @@ const NewsCard = () => {
   const getProduct2 = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend.onrender.com/api/industryNews`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews`
       );
       const result = await response.json();
       if (!response.ok) throw new Error(response.status);
@@ -75,7 +75,7 @@ const NewsCard = () => {
   const getProduct3 = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend.onrender.com/api/news`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/news`
       );
       const result = await response.json();
       if (!response.ok) throw new Error(response.status);
@@ -134,7 +134,7 @@ const NewsCard = () => {
                 {item.images?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
-                      src={`https://uzbekneftegaz-backend.onrender.com/uploads/news/${img}`}
+                      src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/news/${img}`}
                       alt={`news-${i}`}
                       className="max-w-full min-h-full object-cover"
                     />

@@ -29,9 +29,10 @@ const Leadership = () => {
   const lang = useSelector((state) => state.language.lang);
   const getProduct = async () => {
     try {
-      const response = await fetch(`https://uzbekneftegaz-backend.onrender.com/api/leader`)
+      const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/api/leader`)
       const data = await response.json()
       Setdata(data.leaders)
+      console.log(data.leaders)
       if (!response.ok) {
         throw new Error(response.status)
       }
@@ -71,7 +72,7 @@ const Leadership = () => {
             {/* Photo */}
             <div className="md:w-1/3 h-64 md:h-auto bg-gradient-to-br from-blue-500 to-blue-600 relative">
               <img
-                src={`https://uzbekneftegaz-backend.onrender.com/uploads/leaders/${item.avatar}`}
+                src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/leaders/${item.avatar}`}
                 alt={item.fullName?.uz}
                 className="  object-cover shadow min-w-full max-h-[95%]"
               />

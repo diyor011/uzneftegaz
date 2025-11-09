@@ -8,10 +8,11 @@ const Banner = () => {
 
     const getBanner = async () => {
         try {
-            const response = await fetch("https://uzbekneftegaz-backend.onrender.com/api/banner");
+            const response = await fetch("https://uzbekneftegaz-backend-production.up.railway.app/api/banner");
             if (!response.ok) throw new Error(response.status);
             const json = await response.json();
             setData(json.banners);
+            console.log(json.banners)
         } catch (err) {
             console.error("Banner fetch error:", err);
         }
@@ -43,13 +44,13 @@ const Banner = () => {
                     <div className="absolute inset-0">
                         {item.mediaType === "image" ? (
                             <img
-                                src={`https://uzbekneftegaz-backend.onrender.com/uploads/banners/${item.file}`}
+                                src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/banners/${item.file}`}
                                 alt={item.title['uz'] || item.title.uz}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
                             <video
-                                src={`https://uzbekneftegaz-backend.onrender.com/uploads/banners/${item.file}`}
+                                src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/banners/${item.file}`}
                                 autoPlay
                                 muted
                                 loop

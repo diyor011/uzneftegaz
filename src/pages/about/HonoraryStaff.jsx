@@ -10,7 +10,7 @@ export default function HonoraryEmployees() {
   const lang = useSelector((state) => state.language.lang);
   const getProduct = async () => {
     try {
-      const response = await fetch(`https://uzbekneftegaz-backend.onrender.com/api/honorary/`)
+      const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/api/honorary/`)
       const data = await response.json()
       Setdata(data.data)
       if (!response.ok) {
@@ -57,7 +57,7 @@ export default function HonoraryEmployees() {
                   <Medal className="w-6 h-6 text-orange-600" />
                 </div>
                 <div className=" mb-12">
-                  <img  className='' src={`https://uzbekneftegaz-backend.onrender.com/uploads/honorary/${employee.image}`} alt="" />
+                  <img  className='' src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/honorary/${employee.image}`} alt="" />
                 </div>
               </div>
 

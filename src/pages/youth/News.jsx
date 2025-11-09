@@ -20,7 +20,7 @@ export default function NewsPage() {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend.onrender.com/api/localNews`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/localNews`
       );
       const result = await response.json();
 
@@ -80,7 +80,7 @@ export default function NewsPage() {
                   item.images.map((img, i) => (
                     <SwiperSlide key={i}>
                       <img
-                        src={`https://uzbekneftegaz-backend.onrender.com/uploads/localNews/${img}`}
+                        src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/localNews/${img}`}
                         alt={item.title?.[lang]}
                         className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
                           } ${hoveredNews === item._id
@@ -93,7 +93,7 @@ export default function NewsPage() {
                 ) : (
                   <SwiperSlide>
                     <img
-                      src={`https://uzbekneftegaz-backend.onrender.com/uploads/localNews/${item.images}`}
+                      src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/localNews/${item.images}`}
                       alt={item.title?.[lang]}
                       className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"
                         }`}

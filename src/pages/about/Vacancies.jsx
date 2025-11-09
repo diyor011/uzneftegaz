@@ -65,7 +65,7 @@ const Vacancies = () => {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend.onrender.com/api/vacancies`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/vacancies`
       );
       const data = await response.json();
       Setdata(data.vacancies);

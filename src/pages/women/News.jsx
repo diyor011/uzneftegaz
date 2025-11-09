@@ -19,7 +19,7 @@ export default function IndustryNewsPage() {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend.onrender.com/api/industryNews`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews`
       );
       const result = await response.json();
       if (!response.ok) throw new Error(response.status);
@@ -72,7 +72,7 @@ export default function IndustryNewsPage() {
                 {item.images?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
-                      src={`https://uzbekneftegaz-backend.onrender.com/uploads/industryNews/${img}`}
+                      src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/industryNews/${img}`}
                       alt={item.title?.[lang]}
                       className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
                         } ${hoveredNews === item._id
