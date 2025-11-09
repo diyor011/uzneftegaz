@@ -11,6 +11,7 @@ const Banner = () => {
             const response = await fetch("https://uzbekneftegaz-backend-production.up.railway.app/api/banner");
             if (!response.ok) throw new Error(response.status);
             const json = await response.json();
+            
             setData(json.banners);
             console.log(json.banners)
         } catch (err) {
