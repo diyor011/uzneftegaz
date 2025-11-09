@@ -30,7 +30,7 @@ const NewsCard = () => {
 
 
       if (result.news?.length > 0) {
-        const last = result.news[result.news.length - 1];
+        const last = result.news[0];
 
         dispatch(setLastItem({
           pageName: "youthNews",
@@ -55,7 +55,7 @@ const NewsCard = () => {
       if (!response.ok) throw new Error(response.status);
       setData2(result.news);
       if (result.news?.length > 0) {
-        const last = result.news[result.news.length - 1];
+        const last = result.news[0];
 
         dispatch(setLastItem({
           pageName: "industryNews",
@@ -82,7 +82,7 @@ const NewsCard = () => {
       setData3(result.news);
 
       if (result.news?.length > 0) {
-        const last = result.news[result.news.length - 1];
+        const last = result.news[0];
 
         dispatch(setLastItem({
           pageName: "mainNews",
@@ -136,7 +136,7 @@ const NewsCard = () => {
                     <img
                       src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/news/${img}`}
                       alt={`news-${i}`}
-                      className="max-w-full min-h-full object-cover"
+                      className="min-w-full max-h-[300px] h-full object-cover"
                     />
                   </SwiperSlide>
                 ))}

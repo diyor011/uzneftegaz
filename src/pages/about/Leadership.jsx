@@ -43,7 +43,7 @@ const Leadership = () => {
   }
   const { t } = useTranslation();
 
-  
+
 
   useEffect(() => {
     getProduct()
@@ -54,7 +54,7 @@ const Leadership = () => {
 
 
   return (
-    <div className="max-w-[90%] mx-auto mt-16 flex flex-col gap-8">
+    <div className="max-w-[90%] mx-auto my-16 flex flex-col gap-8">
       <div
         className="flex items-center gap-2 mt-16
                 "
@@ -67,7 +67,7 @@ const Leadership = () => {
       {data.map((item) => (
         <div
           key={item._id}
-          className="bg-white max-h-[300px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+          className="bg-white max-h-[350px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
         >
           <div className="flex flex-col md:flex-row">
             {/* Photo */}
@@ -81,8 +81,8 @@ const Leadership = () => {
 
             {/* Info */}
             <div className="md:w-2/3 p-6 lg:p-8">
-              <h3 className="text-6xl font-bold text-base-content mb-2">
-                {item.Fullname?.[lang]}
+              <h3 className="text-4xl font-bold text-info mb-4">
+                {item.fullName?.[lang]}
               </h3>
               <p className="text-orange-600 font-semibold mb-4 text-lg">
                 {item.grade?.[lang]}
