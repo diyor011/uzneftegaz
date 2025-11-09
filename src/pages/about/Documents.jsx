@@ -44,24 +44,24 @@ const Documents = () => {
 
 
 
-const handleDownload = async (file) => {
-  try {
-    const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/uploads/files/${file}`);
-    if (!response.ok) throw new Error("Файл недоступен");
+  const handleDownload = async (file) => {
+    try {
+      const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/uploads/files/${file}`);
+      if (!response.ok) throw new Error("Файл недоступен");
 
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = file;
-    a.click();
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = file;
+      a.click();
 
-    window.URL.revokeObjectURL(url);
-  } catch (err) {
-    console.log("Download failed:", err);
-  }
-};
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.log("Download failed:", err);
+    }
+  };
   const { t } = useTranslation();
 
 
@@ -73,7 +73,7 @@ const handleDownload = async (file) => {
       >
         <img src={logo} alt="" />
         <h2 className="text-4xl font-bold  text-info duration-300">
-            {t("about.documents")}
+          {t("about.documents")}
         </h2>
       </div>
       <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
@@ -96,18 +96,18 @@ const handleDownload = async (file) => {
                   </p>
                 </div>
               </div>
-             
+
             </div>
 
             <p className="text-gray-600 mb-4">{item.description?.[lang]}</p>
 
-            <div className="flex items-center justify-between pt-4 border-t">
-              <button onClick={()=> handleDownload(item.file)} className="bg-info hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all">
+            <div className="flex items-center justify-between pt-4 border-t cursor-pointer">
+              <button onClick={() => handleDownload(item.file)} className="bg-info hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all">
                 <Download className="w-4 h-4" />
-              
+
 
                 Yuklab olish
-              
+
               </button>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Target, Award, TrendingUp, Heart, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
 
 export default function AboutUs() {
     const [counts, setCounts] = useState({ years: 0, clients: 0, projects: 0 });
-
+    const { t } = useTranslation();
     useEffect(() => {
         const duration = 2000;
         const steps = 60;
@@ -63,11 +65,11 @@ export default function AboutUs() {
                 <div className="text-center mb-16">
 
                     <h2 className="text-2xl font-bold  mb-4 max-w-3xl mx-auto leading-relaxed">
-                        Biz “Нефт газ бино иншоот” МЧЖ
+                        {t("home.homeTitle")}
                     </h2>
-                    <p>“NEFT GAZ BINO INSHOAT” МЧЖ фаолияти бино ва иншоотлардан ишончли ва самарали фойдаланиш, “Ўзбекнефтгаз” акциядорлик жамияти биноларига замонавий аутсорсинг хизматлар ва бошка ташкилотлар фаолияти учун мўътадил ишлаб чиқариш шароитларини таъминлаш билан шуғулланади.
-
-                        Жамият юридик шахс сифатида “Ўзбекнефтгаз” акциядорлик жамияти томонидан ташкил этилган. “Ўзбекнефтгаз” акциядорлик жамиятнинг бевосита таркибга киради ва унинг фаолиятида Ўзбекистон Республикаси қонунлари, Президент фармонлари, Ўзбекистон Республикаси Вазирлар Маҳкамасининг қарорлари ва фармойишларига ва “Ўзбекнефтгаз” АЖ кўрсатмаларига амал қилади.</p>
+         <p>    
+             {t("home.homeDesc")}
+         </p>
                 </div>
 
                 {/* Stats */}

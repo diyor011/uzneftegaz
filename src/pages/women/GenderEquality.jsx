@@ -31,7 +31,7 @@ export default function GenderEqualityPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 mx-auto max-w-[90%]">
+    <div className="min-h-screen  py-12 px-4 mx-auto max-w-[90%]">
       <div className="">
         <div
           className="flex items-center gap-2 mt-8

@@ -95,7 +95,7 @@
     }
   ],
   "about": {
-      "news": "Yangiliklar",
+    "news": "Yangiliklar",
     "title": "Biz haqimizda",
     "leadership": "Rahbariyat",
     "departments": "Tarkibiy bo‘limlar",
@@ -109,13 +109,22 @@
     "honoraryStaffgrade": "Baho",
     "honoraryStaffyear": "Yil",
     "honoraryStaffproject": "Loyiha",
-     "vacanciesModalResume": "Rezume",
+    "vacanciesModalResume": "Rezume",
     "vacanciesModalVacancyName": "Vakansiya nomi",
     "vacanciesModalDescription": "Ma'lumotlaringizni to'ldiring va rezumeingizni yuklang",
     "vacanciesModalSendResume": "Rezume yuborish",
     "vacanciesModalApply": "Vakansiyalarga ariza topshirish",
     "vacanciesModalCloseBtn": "Bekor qilish",
     "vacanciesInputUpload": "Faylni tanlash uchun bosing",
-        "vacanciesExamplePosition": "Masalan: buxgalter"
+    "vacanciesExamplePosition": "Masalan: buxgalter"
+  },
+  "home": {
+    "homeCategoryCard1": "Asosiy yangiliklar",
+    "homeCategoryCard2": "Xotin-qizlar yangiliklar",
+    "homeCategoryCard3": "Yoshlar siyosati yangiliklar",
+    "homeTitle": "NEFT GAZ BINO INSHOAT MCHJ",
+    "homeDesc": "Faoliyati bino va inshootlardan ishonchli va samarali foydalanish, “Oʻzbekneftgaz” aksiyadorlik jamiyati binolariga zamonaviy autsorsing xizmatlar va boshqa tashkilotlar faoliyati uchun moʻtadil ishlab chiqarish sharoitlarini taʼminlash bilan shugʻullanadi. Jamiyat yuridik shaxs sifatida “Oʻzbekneftgaz” aksiyadorlik jamiyati tomonidan tashkil etilgan. “Oʻzbekneftgaz” aksiyadorlik jamiyatining bevosita tarkibiga kiradi va uning faoliyatida Oʻzbekiston Respublikasi qonunlari, Prezident farmonlari, Oʻzbekiston Respublikasi Vazirlar Mahkamasining qarorlari va farmoyishlariga hamda “Oʻzbekneftgaz” AJ koʻrsatmalariga amal qiladi.",
+      "aboutUs": "Biz Haqimizda",
+  "latestNews": "Soʻnggi Yangiliklar"
   }
 }

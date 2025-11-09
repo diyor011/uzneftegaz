@@ -90,7 +90,7 @@ export default function PlansReportsPage() {
   const currentPlans = activeYear === '2025' ? plans2025 : plans2024;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 max-w-[90%] mx-auto ">
+    <div className="min-h-screen  py-12 max-w-[90%] mx-auto ">
          
          <div
                 className="flex items-center gap-2 mt-8

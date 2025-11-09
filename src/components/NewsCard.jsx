@@ -6,112 +6,70 @@ import 'swiper/css'
 import { Link } from 'react-router-dom'
 import { Autoplay } from "swiper/modules";
 import { setLastItem } from "../redux/lastDataSlice";
-
+import { useTranslation } from "react-i18next";
 
 const NewsCard = () => {
-
+  const dispatch = useDispatch();
   const { mainNews, industryNews, youthNews } = useSelector((state) => state.lastData)
   const lang = useSelector((state) => state.language.lang)
+  const { t } = useTranslation()
+
   const news = [mainNews, industryNews, youthNews].filter(Boolean)
+
   const [data1, setData1] = useState([])
   const [data2, setData2] = useState([])
   const [data3, setData3] = useState([])
 
-  const dispatch = useDispatch();
-  const getProduct1 = async () => {
+  const getProduct = async (url, setData, pageName, categoryKey, path) => {
     try {
-      const response = await fetch(
-        `https://uzbekneftegaz-backend-production.up.railway.app/api/localNews`
-      );
-      const result = await response.json();
-
-      if (!response.ok) throw new Error(response.status);
-      setData1(result.news);
-
+      const response = await fetch(url)
+      const result = await response.json()
+      if (!response.ok) throw new Error(response.status)
+      setData(result.news)
 
       if (result.news?.length > 0) {
-        const last = result.news[0];
-
+        const last = result.news[0]
         dispatch(setLastItem({
-          pageName: "youthNews",
+          pageName,
           item: {
             ...last,
-            category: "Sanoat yangiliklari",
-            path: "youth/news"
+            category: t(categoryKey),
+            path
           }
-        }));
-      }
-
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  const getProduct2 = async () => {
-    try {
-      const response = await fetch(
-        `https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews`
-      );
-      const result = await response.json();
-      if (!response.ok) throw new Error(response.status);
-      setData2(result.news);
-      if (result.news?.length > 0) {
-        const last = result.news[0];
-
-        dispatch(setLastItem({
-          pageName: "industryNews",
-          item: {
-            ...last,
-            category: "Хотин кизлар",
-            path: "/women/news"
-          }
-        }));
-      }
-
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const getProduct3 = async () => {
-    try {
-      const response = await fetch(
-        `https://uzbekneftegaz-backend-production.up.railway.app/api/news`
-      );
-      const result = await response.json();
-      if (!response.ok) throw new Error(response.status);
-      setData3(result.news);
-
-      if (result.news?.length > 0) {
-        const last = result.news[0];
-
-        dispatch(setLastItem({
-          pageName: "mainNews",
-          item: {
-            ...last,
-            category: "асосий янгиликлар",
-            path: "/news"
-          }
-        }));
+        }))
       }
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
-  };
-
-
-  useEffect(() => {
-    getProduct3()
-    getProduct2()
-    getProduct1()
-  }, [])
-
-
-
-  if (news.length === 0) {
-    return <p className="text-center text-gray-500 mt-10">Yangiliklar mavjud emas</p>
   }
 
-  console.log(news);
+  useEffect(() => {
+    getProduct(
+      "https://uzbekneftegaz-backend-production.up.railway.app/api/news",
+      setData3,
+      "mainNews",
+      "home.homeCategoryCard1",
+      "/news"
+    )
+    getProduct(
+      "https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews",
+      setData2,
+      "industryNews",
+      "home.homeCategoryCard2",
+      "/women/news"
+    )
+    getProduct(
+      "https://uzbekneftegaz-backend-production.up.railway.app/api/localNews",
+      setData1,
+      "youthNews",
+      "home.homeCategoryCard3",
+      "/youth/news"
+    )
+  }, [t])
+
+  if (news.length === 0) {
+    return <p className="text-center text-gray-500 mt-10">{t("noNews", "Yangiliklar mavjud emas")}</p>
+  }
 
   return (
     <div className="grid gap-8">
@@ -130,7 +88,6 @@ const NewsCard = () => {
                 modules={[Autoplay]}
                 autoplay={{ delay: 2500, disableOnInteraction: false }}
               >
-
                 {item.images?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
@@ -142,7 +99,6 @@ const NewsCard = () => {
                 ))}
               </Swiper>
 
-              {/* Категория */}
               <div className="absolute z-50 top-4 left-4 bg-white px-4 py-2 rounded-full shadow-lg">
                 <span className="text-sm font-bold text-orange-600 group-hover:text-info transition-all duration-300">
                   {item.category}
@@ -150,10 +106,7 @@ const NewsCard = () => {
               </div>
             </div>
 
-            {/* Контент блока */}
             <div className="lg:w-2/3 p-6 lg:p-8">
-
-              {/* Автор и дата */}
               <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
@@ -166,21 +119,17 @@ const NewsCard = () => {
                 </div>
               </div>
 
-              {/* Заголовок */}
               <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition">
                 {item.title?.[lang]}
               </h3>
 
-              {/* Описание */}
               <p className="text-gray-600 mb-6 line-clamp-3">
                 {item.content?.[lang]}
               </p>
 
-              {/* Кнопка */}
               <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow-md hover:shadow-lg transition-all">
-                Batafsil <ChevronRight className="w-4 h-4" />
+                {t("readMore", "Batafsil")} <ChevronRight className="w-4 h-4" />
               </button>
-
             </div>
           </div>
         </Link>

@@ -20,7 +20,7 @@ export default function NewsPage() {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend-production.up.railway.app/api/localNews`
+        `https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews`
       );
       const result = await response.json();
 
