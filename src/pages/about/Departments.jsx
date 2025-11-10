@@ -10,7 +10,7 @@ export default function Departments() {
   const lang = useSelector((state) => state.language.lang);
   const getProduct = async () => {
     try {
-      const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/api/bolimlar`)
+      const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/bolimlar`)
       const data = await response.json()
       setData(data.bolimlar)
       if (!response.ok) {

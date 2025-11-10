@@ -20,7 +20,7 @@ export default function NewsPage() {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend-production.up.railway.app/api/news`
+        `https://uzneftegaz-backend-production.up.railway.app/api/news`
       );
       const result = await response.json();
       if (!response.ok) throw new Error(response.status);

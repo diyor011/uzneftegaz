@@ -10,7 +10,7 @@ export default function HonoraryEmployees() {
   const lang = useSelector((state) => state.language.lang);
   const getProduct = async () => {
     try {
-      const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/api/honorary/`)
+      const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/honorary/`)
       const data = await response.json()
       Setdata(data.data)
       if (!response.ok) {

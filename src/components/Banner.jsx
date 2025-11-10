@@ -8,7 +8,7 @@ const Banner = () => {
 
     const getBanner = async () => {
         try {
-            const response = await fetch("https://uzbekneftegaz-backend-production.up.railway.app/api/banner");
+            const response = await fetch("https://uzneftegaz-backend-production.up.railway.app/api/banner");
             if (!response.ok) throw new Error(response.status);
             const json = await response.json();
             

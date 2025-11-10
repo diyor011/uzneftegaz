@@ -45,21 +45,21 @@ const NewsCard = () => {
 
   useEffect(() => {
     getProduct(
-      "https://uzbekneftegaz-backend-production.up.railway.app/api/news",
+      "https://uzneftegaz-backend-production.up.railway.app/api/news",
       setData3,
       "mainNews",
       "home.homeCategoryCard1",
       "/news"
     )
     getProduct(
-      "https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews",
+      "https://uzneftegaz-backend-production.up.railway.app/api/industryNews",
       setData2,
       "industryNews",
       "home.homeCategoryCard2",
       "/women/news"
     )
     getProduct(
-      "https://uzbekneftegaz-backend-production.up.railway.app/api/localNews",
+      "https://uzneftegaz-backend-production.up.railway.app/api/localNews",
       setData1,
       "youthNews",
       "home.homeCategoryCard3",

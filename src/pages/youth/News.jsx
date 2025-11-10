@@ -20,14 +20,14 @@ export default function NewsPage() {
   const getProduct = async () => {
     try {
       const response = await fetch(
-        `https://uzbekneftegaz-backend-production.up.railway.app/api/industryNews`
+        `https://uzneftegaz-backend-production.up.railway.app/api/industryNews`
       );
       const result = await response.json();
 
       if (!response.ok) throw new Error(response.status);
       setData(result.news);
 
-    
+
       if (result.news?.length > 0) {
         const last = result.news[result.news.length - 1];
 
@@ -76,27 +76,26 @@ export default function NewsPage() {
                 loop={true}
                 className="w-full"
               >
-             {item.images?.length > 0 ? (
-  item.images.map((img, i) => (
-    <SwiperSlide key={i}>
-      <img
-        src={img.url}
-        alt={item.title?.[lang]}
-        className={`w-full object-cover transition-transform duration-500 ${
-          index === 0 ? "h-80" : "h-60"
-        } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
-      />
-    </SwiperSlide>
-  ))
-) : (
-  <SwiperSlide>
-    <img
-      src={item.images?.url}
-      alt={item.title?.[lang]}
-      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
-    />
-  </SwiperSlide>
-)}
+                {item.images?.length > 0 ? (
+                  item.images.map((img, i) => (
+                    <SwiperSlide key={i}>
+                      <img
+                        src={img.url}
+                        alt={item.title?.[lang]}
+                        className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
+                          } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
+                      />
+                    </SwiperSlide>
+                  ))
+                ) : (
+                  <SwiperSlide>
+                    <img
+                      src={item.images?.url}
+                      alt={item.title?.[lang]}
+                      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
+                    />
+                  </SwiperSlide>
+                )}
 
               </Swiper>
 

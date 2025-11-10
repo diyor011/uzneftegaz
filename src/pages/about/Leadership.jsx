@@ -29,7 +29,7 @@ const Leadership = () => {
   const lang = useSelector((state) => state.language.lang);
   const getProduct = async () => {
     try {
-      const response = await fetch(`https://uzbekneftegaz-backend-production.up.railway.app/api/leader`)
+      const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/leader`)
       const data = await response.json()
       Setdata(data.leaders)
       console.log(data.leaders)
