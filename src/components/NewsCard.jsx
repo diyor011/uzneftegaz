@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 import { Autoplay } from "swiper/modules";
 import { setLastItem } from "../redux/lastDataSlice";
 import { useTranslation } from "react-i18next";
-  import 'aos/dist/aos.css';
-  import AOS from 'aos';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 const NewsCard = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ const NewsCard = () => {
   const { t } = useTranslation()
 
   const news = [mainNews, industryNews, youthNews].filter(Boolean)
+
 
   const [data1, setData1] = useState([])
   const [data2, setData2] = useState([])
@@ -83,7 +84,7 @@ const NewsCard = () => {
   }
 
   return (
-    <div  className="grid gap-8">
+    <div className="grid gap-8">
       {news.map((item) => (
         <Link
           to={item.path}
@@ -142,8 +143,8 @@ const NewsCard = () => {
                   {item.title?.[lang]}
                 </h3>
 
-                <p className="text-gray-600 mb-6 line-clamp-3">
-                  {item.content?.[lang]}
+                <p className="text-red-600 mb-6 line-clamp-3">
+                  {item.description?.[lang]}
                 </p>
               </div>
 

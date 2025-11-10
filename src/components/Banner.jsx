@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     const [data, setData] = useState([]);
     const [current, setCurrent] = useState(0);
-    const [loading, setLoading] = useState(true); // 🔥 loading state
+    const [loading, setLoading] = useState(true);
     const lang = useSelector((state) => state.language.lang) || localStorage.getItem("lang") || "uz";
 
     const getBanner = async () => {
@@ -12,13 +13,12 @@ const Banner = () => {
             const response = await fetch("https://uzneftegaz-backend-production.up.railway.app/api/banner");
             if (!response.ok) throw new Error(response.status);
             const json = await response.json();
-            
             setData(json.banners || []);
         } catch (err) {
             console.error("Banner fetch error:", err);
             setData([]);
         } finally {
-            setLoading(false); // 🔥 loading tugadi
+            setLoading(false);
         }
     };
 
@@ -26,15 +26,17 @@ const Banner = () => {
         getBanner();
     }, []);
 
+    // 🔥 Dynamic interval based on media type
     useEffect(() => {
         if (data.length === 0) return;
-        const interval = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % data.length);
-        }, 4000);
-        return () => clearInterval(interval);
-    }, [data]);
 
-    // 🔥 Loading paytida spinner
+        const timer = setTimeout(() => {
+            setCurrent((prev) => (prev + 1) % data.length);
+        }, data[current]?.mediaType === "video" ? 15000 : 4000);
+
+        return () => clearTimeout(timer);
+    }, [current, data]);
+
     if (loading) {
         return (
             <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-200 rounded-lg mt-4">
@@ -43,7 +45,6 @@ const Banner = () => {
         );
     }
 
-    // 🔥 Banner bo‘lmasa fallback
     if (data.length === 0) {
         return (
             <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-100 rounded-lg mt-4">
@@ -60,7 +61,6 @@ const Banner = () => {
                     className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${i === current ? "opacity-100" : "opacity-0"
                         }`}
                 >
-                    {/* Media Container */}
                     <div className="absolute inset-0">
                         {item.mediaType === "image" ? (
                             <img
@@ -79,14 +79,22 @@ const Banner = () => {
                         )}
                     </div>
 
-                    {/* Overlay va matn */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+                    <div className="absolute z-10 inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
                         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 max-w-4xl drop-shadow-lg">
                             {item.title[lang] || item.title.uz}
                         </h2>
                         <p className="max-w-2xl mb-4 md:mb-6 text-base md:text-lg lg:text-xl drop-shadow-md">
                             {item.description[lang] || item.description.uz}
                         </p>
+                        {/* <Link to={'/news'}>
+                            <button className="px-5 py-2.5 md:px-6 md:py-3 bg-[#EE7427] hover:bg-[#008ec2] rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                                {lang === "ru"
+                                    ? "Подробнее"
+                                    : lang === "kr"
+                                        ? "Батафсил"
+                                        : "Batafsil"}
+                            </button>
+                        </Link> */}
                     </div>
                 </div>
             ))}
@@ -111,7 +119,7 @@ const Banner = () => {
                 <>
                     <button
                         onClick={() => setCurrent((prev) => (prev - 1 + data.length) % data.length)}
-                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-10"
                         aria-label="Previous slide"
                     >
                         <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +128,7 @@ const Banner = () => {
                     </button>
                     <button
                         onClick={() => setCurrent((prev) => (prev + 1) % data.length)}
-                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-10"
                         aria-label="Next slide"
                     >
                         <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
