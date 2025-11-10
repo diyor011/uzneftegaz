@@ -3,7 +3,8 @@ import { Users, Target, Award, TrendingUp, Heart, CalendarCheck, Zap, PartyPoppe
 import { useTranslation } from 'react-i18next';
 import { GiAmpleDress } from "react-icons/gi";
 
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 export default function AboutUs() {
     const [counts, setCounts] = useState({ years: 0, clients: 0, projects: 0 });
     const { t } = useTranslation();
@@ -29,6 +30,10 @@ export default function AboutUs() {
         return () => clearInterval(timer);
     }, []);
 
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     const values = [
         {
             icon: <PartyPopper />,
@@ -55,7 +60,7 @@ export default function AboutUs() {
 
 
     return (
-        <div className="min-h-screen ">
+        <div data-aos="fade-up" className="min-h-screen ">
             {/* Hero Section */}
             <div className=" mx-auto px-6 py-20">
                 <div className="text-center mb-16">
@@ -70,7 +75,7 @@ export default function AboutUs() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid md:grid-cols-3 gap-8 mb-20">
+                <div data-aos="fade-up" className="grid md:grid-cols-3 gap-8 mb-20">
                     <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
                         <div className="text-5xl font-bold text-info mb-2">{counts.years}+</div>
                         <div className="text-gray-600 font-medium"> {t("home.aboutStaffCount")} </div>
@@ -86,7 +91,7 @@ export default function AboutUs() {
                 </div>
 
                 {/* Mission & Vision */}
-                <div className="grid md:grid-cols-2 gap-12 mb-20">
+                <div data-aos="fade-up" className="grid md:grid-cols-2 gap-12 mb-20">
                     <div className="bg-gradient-to-br bg-info p-10 rounded-3xl text-white">
                         <h3 className="text-3xl font-bold mb-4">Missiyamiz</h3>
                         <p className="text-lg leading-relaxed opacity-90">
@@ -96,7 +101,7 @@ export default function AboutUs() {
                         </p>
                     </div>
 
-                    <div className=" bg-orange-400  p-10 rounded-3xl text-white">
+                    <div data-aos="fade-up" className=" bg-orange-400  p-10 rounded-3xl text-white">
                         <h3 className="text-3xl font-bold mb-4">Viziyamiz</h3>
                         <p className="text-lg leading-relaxed opacity-90">
                             Texnologiya va ijodkorlikning uyg'unligida eng yaxshi
@@ -107,7 +112,7 @@ export default function AboutUs() {
                 </div>
 
                 {/* Values */}
-                <div className="">
+                <div data-aos="fade-up" className="">
                     <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
 
                         {t("home.bizningQadriyatlarimiz")}
@@ -116,6 +121,7 @@ export default function AboutUs() {
                         {values.map((value, idx) => (
                             <div
                                 key={idx}
+                                data-aos="fade-up"
                                 className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 text-center group hover:-translate-y-2"
                             >
                                 <div className="inline-flex items-center justify-center w-16 h-16 bg-info duration-500 transition-all group-hover:bg-orange-400 rounded-xl text-white mb-4 group-hover:scale-110 transition-transform">

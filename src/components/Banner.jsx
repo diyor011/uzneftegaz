@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 const Banner = () => {
     const [data, setData] = useState([]);
     const [current, setCurrent] = useState(0);
+    const [loading, setLoading] = useState(true); // 🔥 loading state
     const lang = useSelector((state) => state.language.lang) || localStorage.getItem("lang") || "uz";
 
     const getBanner = async () => {
@@ -12,10 +13,12 @@ const Banner = () => {
             if (!response.ok) throw new Error(response.status);
             const json = await response.json();
             
-            setData(json.banners);
-            console.log(json.banners)
+            setData(json.banners || []);
         } catch (err) {
             console.error("Banner fetch error:", err);
+            setData([]);
+        } finally {
+            setLoading(false); // 🔥 loading tugadi
         }
     };
 
@@ -31,7 +34,23 @@ const Banner = () => {
         return () => clearInterval(interval);
     }, [data]);
 
-    if (data.length === 0) return null;
+    // 🔥 Loading paytida spinner
+    if (loading) {
+        return (
+            <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-200 rounded-lg mt-4">
+                <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        );
+    }
+
+    // 🔥 Banner bo‘lmasa fallback
+    if (data.length === 0) {
+        return (
+            <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-100 rounded-lg mt-4">
+                <p className="text-gray-500 text-lg">Banner mavjud emas</p>
+            </div>
+        );
+    }
 
     return (
         <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg mt-4 bg-gray-900">
@@ -41,12 +60,12 @@ const Banner = () => {
                     className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${i === current ? "opacity-100" : "opacity-0"
                         }`}
                 >
-                    {/* Media Container - rasmni to'g'ri ko'rsatish uchun */}
+                    {/* Media Container */}
                     <div className="absolute inset-0">
                         {item.mediaType === "image" ? (
                             <img
                                 src={`${item.file}`}
-                                alt={item.title['uz'] || item.title.uz}
+                                alt={item.title[lang] || item.title.uz}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
@@ -68,14 +87,6 @@ const Banner = () => {
                         <p className="max-w-2xl mb-4 md:mb-6 text-base md:text-lg lg:text-xl drop-shadow-md">
                             {item.description[lang] || item.description.uz}
                         </p>
-
-                        <button className="px-5 py-2.5 md:px-6 md:py-3 bg-[#EE7427] hover:bg-[#008ec2] rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                            {lang === "ru"
-                                ? "Подробнее"
-                                : lang === "kr"
-                                    ? "Батафсил"
-                                    : "Batafsil"}
-                        </button>
                     </div>
                 </div>
             ))}
