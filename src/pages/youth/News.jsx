@@ -76,30 +76,28 @@ export default function NewsPage() {
                 loop={true}
                 className="w-full"
               >
-                {item.images?.length > 0 ? (
-                  item.images.map((img, i) => (
-                    <SwiperSlide key={i}>
-                      <img
-                        src={`${img}`}
-                        alt={item.title?.[lang]}
-                        className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
-                          } ${hoveredNews === item._id
-                            ? "scale-110"
-                            : "scale-100"
-                          }`}
-                      />
-                    </SwiperSlide>
-                  ))
-                ) : (
-                  <SwiperSlide>
-                    <img
-                      src={`${item.images}`}
-                      alt={item.title?.[lang]}
-                      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"
-                        }`}
-                    />
-                  </SwiperSlide>
-                )}
+             {item.images?.length > 0 ? (
+  item.images.map((img, i) => (
+    <SwiperSlide key={i}>
+      <img
+        src={img.url}
+        alt={item.title?.[lang]}
+        className={`w-full object-cover transition-transform duration-500 ${
+          index === 0 ? "h-80" : "h-60"
+        } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
+      />
+    </SwiperSlide>
+  ))
+) : (
+  <SwiperSlide>
+    <img
+      src={item.images?.url}
+      alt={item.title?.[lang]}
+      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
+    />
+  </SwiperSlide>
+)}
+
               </Swiper>
 
               {item.category && (

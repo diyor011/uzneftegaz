@@ -15,6 +15,7 @@ export default function NewsPage() {
   const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  console.log(data);
 
   const getProduct = async () => {
     try {
@@ -73,26 +74,23 @@ export default function NewsPage() {
                   item.images.map((img, i) => (
                     <SwiperSlide key={i}>
                       <img
-                        src={ `${img}` }
+                        src={img.url}
                         alt={item.title?.[lang]}
                         className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
-                          } ${hoveredNews === item._id
-                            ? "scale-110"
-                            : "scale-100"
-                          }`}
+                          } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
                       />
                     </SwiperSlide>
                   ))
                 ) : (
                   <SwiperSlide>
                     <img
-                      src={`${item.images}`}
+                      src={item.images?.url}
                       alt={item.title?.[lang]}
-                      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"
-                        }`}
+                      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
                     />
                   </SwiperSlide>
                 )}
+
               </Swiper>
             </div>
 

@@ -91,7 +91,7 @@ const NewsCard = () => {
                 {item.images?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
-                      src={`${img}`}
+                      src={`${img.url}`}
                       alt={`news-${i}`}
                       className="min-w-full max-h-[300px] h-full object-cover"
                     />
