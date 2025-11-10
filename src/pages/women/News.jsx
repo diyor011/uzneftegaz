@@ -72,7 +72,7 @@ export default function IndustryNewsPage() {
                 {item.images?.map((img, i) => (
                   <SwiperSlide key={i}>
                     <img
-                      src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/industryNews/${img}`}
+                      src={`${img}`}
                       alt={item.title?.[lang]}
                       className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
                         } ${hoveredNews === item._id

@@ -56,8 +56,8 @@ export default function HonoraryEmployees() {
                 <div className="absolute top-4 right-4 bg-white rounded-full p-2">
                   <Medal className="w-6 h-6 text-orange-600" />
                 </div>
-                <div className=" mb-12">
-                  <img  className='' src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/honorary/${employee.image}`} alt="" />
+                <div className="overflow-hidden max-h-[230px] ">
+                  <img  className=' w-full h-full mb-12 object-cover' src={`${employee.image}`} alt="" />
                 </div>
               </div>
 

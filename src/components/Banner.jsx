@@ -45,13 +45,13 @@ const Banner = () => {
                     <div className="absolute inset-0">
                         {item.mediaType === "image" ? (
                             <img
-                                src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/banners/${item.file}`}
+                                src={`${item.file}`}
                                 alt={item.title['uz'] || item.title.uz}
                                 className="w-full h-full object-cover"
                             />
                         ) : (
                             <video
-                                src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/banners/${item.file}`}
+                                src={`${item.file}`}
                                 autoPlay
                                 muted
                                 loop

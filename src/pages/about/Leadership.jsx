@@ -73,9 +73,9 @@ const Leadership = () => {
             {/* Photo */}
             <div className="md:w-1/3 h-64 md:h-auto bg-gradient-to-br from-blue-500 to-blue-600 relative">
               <img
-                src={`https://uzbekneftegaz-backend-production.up.railway.app/uploads/leaders/${item.avatar}`}
+                src={`${item.avatar}`}
                 alt={item.fullName?.uz}
-                className="  object-cover shadow min-w-full max-h-[95%]"
+                className="  object-cover shadow w-full h-full"
               />
             </div>
 
@@ -106,7 +106,7 @@ const Leadership = () => {
                 </div>
               </div>
 
-              <p className="text-gray-700 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+              <p className="text-gray-700 bg-blue-50 p-2 rounded-lg border-l-4 border-blue-500">
                 {item.description?.[lang]}
               </p>
             </div>
