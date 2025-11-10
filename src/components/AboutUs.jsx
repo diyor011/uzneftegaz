@@ -11,7 +11,7 @@ export default function AboutUs() {
         const steps = 60;
         const interval = duration / steps;
 
-        const targets = { years: 5, clients: 150, projects: 200 };
+        const targets = { years: 189, clients: 62, projects: 127 };
         let step = 0;
 
         const timer = setInterval(() => {
@@ -51,12 +51,7 @@ export default function AboutUs() {
         }
     ];
 
-    const team = [
-        { name: "Aziz Rahimov", role: "Founder & CEO", img: "👨‍💼" },
-        { name: "Madina Karimova", role: "Creative Director", img: "👩‍🎨" },
-        { name: "Sardor Tursunov", role: "Tech Lead", img: "👨‍💻" },
-        { name: "Dilnoza Sharipova", role: "Project Manager", img: "👩‍💼" }
-    ];
+
 
     return (
         <div className="min-h-screen ">
@@ -67,24 +62,25 @@ export default function AboutUs() {
                     <h2 className="text-2xl font-bold  mb-4 max-w-3xl mx-auto leading-relaxed">
                         {t("home.homeTitle")}
                     </h2>
-         <p>    
-             {t("home.homeDesc")}
-         </p>
+                    <p>
+                         {t("home.homeDesc")}
+                        
+                    </p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid md:grid-cols-3 gap-8 mb-20">
                     <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
                         <div className="text-5xl font-bold text-info mb-2">{counts.years}+</div>
-                        <div className="text-gray-600 font-medium">Yillik Tajriba</div>
+                        <div className="text-gray-600 font-medium"> {t("home.aboutStaffCount")} </div>
                     </div>
                     <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
                         <div className="text-5xl font-bold text-info mb-2">{counts.clients}+</div>
-                        <div className="text-gray-600 font-medium">Baxtli Mijozlar</div>
+                        <div className="text-gray-600 font-medium">{t("home.womenStaff")}</div>
                     </div>
                     <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
                         <div className="text-5xl font-bold text-orange-400 mb-2">{counts.projects}+</div>
-                        <div className="text-gray-600 font-medium">Bajarilgan Loyihalar</div>
+                        <div className="text-gray-600 font-medium">{t("home.menStaff")}</div>
                     </div>
                 </div>
 
