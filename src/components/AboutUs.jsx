@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Target, Award, TrendingUp, Heart, Zap } from 'lucide-react';
+import { Users, Target, Award, TrendingUp, Heart, CalendarCheck, Zap, PartyPopper, ShieldPlus, MapPinHouse } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { GiAmpleDress } from "react-icons/gi";
 
 
 export default function AboutUs() {
@@ -30,24 +31,24 @@ export default function AboutUs() {
 
     const values = [
         {
-            icon: <Target className="w-8 h-8" />,
-            title: "Maqsadga Yo'nalganlik",
-            desc: "Har bir loyihada aniq natijaga erishish"
+            icon: <PartyPopper />,
+            title: ` ${t("home.milliyBayramlar")} `,
+            desc: `${t("home.milliyBayramlarDesc")} `
         },
         {
-            icon: <Heart className="w-8 h-8" />,
-            title: "Mijozlar Mamnuniyati",
-            desc: "Sizning muvaffaqiyatingiz - bizning maqsadimiz"
+            icon: <GiAmpleDress className='w-8 h-8' />,
+            title: ` ${t("home.milliyLiboslar")} `,
+            desc: ` ${t("home.milliyLiboslarDesc")} `
         },
         {
-            icon: <Zap className="w-8 h-8" />,
-            title: "Innovatsiya",
-            desc: "Zamonaviy texnologiyalar va yechimlar"
+            icon: <ShieldPlus className="w-8 h-8" />,
+            title: `${t("home.ijtimoiyHimoya")}`,
+            desc: `${t("home.ijtimoiyHimoyaDesc")} `
         },
         {
-            icon: <Award className="w-8 h-8" />,
-            title: "Sifat Kafolati",
-            desc: "Yuqori standartlar va professional yondashuv"
+            icon: <MapPinHouse className="w-8 h-8" />,
+            title: `${t("home.yashilMakonDasturi")}`,
+            desc: `${t("home.yashilMakonDasturiDesc")} `
         }
     ];
 
@@ -63,8 +64,8 @@ export default function AboutUs() {
                         {t("home.homeTitle")}
                     </h2>
                     <p>
-                         {t("home.homeDesc")}
-                        
+                        {t("home.homeDesc")}
+
                     </p>
                 </div>
 
@@ -80,7 +81,7 @@ export default function AboutUs() {
                     </div>
                     <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
                         <div className="text-5xl font-bold text-orange-400 mb-2">{counts.projects}+</div>
-                        <div className="text-gray-600 font-medium">{t("home.menStaff")}</div>
+                        <div className="text-gray-600 font-medium"> {t("home.menStaff")} </div>
                     </div>
                 </div>
 
@@ -108,7 +109,8 @@ export default function AboutUs() {
                 {/* Values */}
                 <div className="">
                     <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-                        Bizning Qadriyatlarimiz
+
+                        {t("home.bizningQadriyatlarimiz")}
                     </h2>
                     <div className="grid md:grid-cols-4 gap-6">
                         {values.map((value, idx) => (

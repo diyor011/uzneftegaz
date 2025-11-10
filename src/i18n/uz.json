@@ -128,6 +128,15 @@
     "latestNews": "Soʻnggi Yangiliklar",
     "aboutStaffCount": " Umumiy xadimlar ",
     "womenStaff": "Xotin-qizlar",
-    "menStaff": "Erkak kishi"
+    "menStaff": "Erkak kishi",
+    "milliyBayramlar": "Milliy bayramlar",
+    "milliyLiboslar": "Milliy liboslar",
+    "ijtimoiyHimoya": "Ijtimoiy himoya",
+    "yashilMakonDasturi": "Yashil makon dasturi",
+    "milliyBayramlarDesc": "Milliy bayramlar — xalqimiz tarixini, qadriyatlarini va birlik ruhini ifodalovchi muhim sanalar.",
+    "milliyLiboslarDesc": "Milliy liboslar — o‘zbek xalqining nafis didi va ma’naviy boyligini ifodalovchi durdona.",
+    "ijtimoiyHimoyaDesc": "Xodimlarga g‘amxo‘rlik — barqaror va samarali jamoaning kafolati.",
+    "yashilMakonDasturiDesc": "Yashil makon dasturi — ekologik farovonlik va sog‘lom hayot sari qadam.",
+      "bizningQadriyatlarimiz": "Bizning Qadriyatlarimiz"
   }
 }
