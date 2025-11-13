@@ -29,6 +29,7 @@ const Documents = () => {
       const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/normative/all`)
       const data = await response.json()
       Setdata(data.data)
+      console.log(data.data)
       if (!response.ok) {
         throw new Error(response.status)
       }
@@ -46,7 +47,7 @@ const Documents = () => {
 
   const handleDownload = async (file) => {
     try {
-      const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/uploads/files/${file}`);
+      const response = await fetch(`${file}`);
       if (!response.ok) throw new Error("Файл недоступен");
 
       const blob = await response.blob();

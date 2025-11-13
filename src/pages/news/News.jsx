@@ -25,7 +25,7 @@ export default function NewsPage() {
       const result = await response.json();
       if (!response.ok) throw new Error(response.status);
       setData(result.news);
-
+      console.log(result.news)
       if (result.news?.length > 0) {
         const last = result.news[result.news.length - 1];
 
@@ -70,39 +70,54 @@ export default function NewsPage() {
                 loop={true}
                 className="w-full"
               >
-                {item.images?.length > 0 ? (
-                  item.images.map((img, i) => (
+                {item.mediaType?.length > 0 ? (
+                  item.mediaType.map((media, i) => (
                     <SwiperSlide key={i}>
-                      <img
-                        src={img.url}
-                        alt={item.title?.[lang]}
-                        className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
-                          } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
-                      />
+                      {media.type === "image" ? (
+                        <img
+                          src={media.url}
+                          alt={item.title?.[lang]}
+                          className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
+                            } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
+                        />
+                      ) : (
+                        <video
+                          src={media.url}
+                          controls
+                          className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"
+                            }`}
+                          preload="metadata"
+                        />
+                      )}
                     </SwiperSlide>
                   ))
                 ) : (
                   <SwiperSlide>
                     <img
-                      src={item.images?.url}
+                      src={logo} // fallback rasm
                       alt={item.title?.[lang]}
                       className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
                     />
                   </SwiperSlide>
                 )}
-
               </Swiper>
+
             </div>
 
             <div className="p-6">
               <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
                 <Calendar className="w-4 h-4" />
                 <span>
-                  {new Date(item.createdAt).toLocaleDateString("uz-UZ", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                  {item.createdAt && (
+                    <span>
+                      {new Date(item.createdAt).toLocaleDateString("uz-UZ", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        timeZone: "Asia/Tashkent",
+                      })}
+                    </span>
+                  )}
                 </span>
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2 hover:text-blue-700 transition-colors cursor-pointer">

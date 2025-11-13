@@ -94,7 +94,6 @@ const NewsCard = () => {
         >
           <div className="flex flex-col lg:flex-row">
 
-            {/* 🖼️ Rasm qismi — universal va chiroyli */}
             <div className="lg:w-1/3  max-h-[250px]  relative overflow-hidden aspect-[16/9] lg:aspect-auto">
               <Swiper
                 spaceBetween={10}
@@ -102,21 +101,44 @@ const NewsCard = () => {
                 loop
                 modules={[Autoplay]}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-                className="h-full"
+                className="h-full rounded-2xl"
               >
-                {item.images?.map((img, i) => (
-                  <SwiperSlide key={i}>
-                    <div className="relative w-full h-full">
-                      <img
-                        src={img.url}
-                        alt={`news-${i}`}
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                {Array.isArray(item.mediaType) && item.mediaType.length > 0 ? (
+                  item.mediaType.map((media, i) => (
+                    <SwiperSlide key={i}>
+                      <div className="relative w-full h-full rounded-2xl">
+                        {media.type === "video" ? (
+                          <video
+                            src={media.url}
+                            controls
+                            muted
+                            autoPlay // agar autoplay kerak bo'lsa yoqing, lekin UX uchun tavsiya etilmaydi
+                            loop
+                            preload="metadata"
+                            className="w-full h-full object-cover rounded-2xl"
+                          />
+                        ) : (
+                          <img
+                            src={media.url}
+                            alt={item.title?.[lang] || `media-${i}`}
+                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
+                          />
+                        )}
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                      </div>
+                    </SwiperSlide>
+                  ))
+                ) : (
+                  <SwiperSlide>
+                    <div className="flex items-center justify-center h-full bg-gray-100 text-gray-500">
+                      Ma'lumot mavjud emas!
                     </div>
                   </SwiperSlide>
-                ))}
+                )}
               </Swiper>
+
+
 
               <div className="absolute z-50 top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full shadow-md">
                 <span className="text-sm font-semibold text-orange-600 group-hover:text-info transition-all duration-300">
@@ -139,11 +161,11 @@ const NewsCard = () => {
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-gray-800 mb-3 group-hover:text-info transition-colors duration-300">
                   {item.title?.[lang]}
                 </h3>
 
-                <p className="text-red-600 mb-6 line-clamp-3">
+                <p className="text-gray-800 mb-6 line-clamp-3">
                   {item.description?.[lang]}
                 </p>
               </div>

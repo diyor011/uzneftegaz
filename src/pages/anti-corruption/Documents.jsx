@@ -28,7 +28,7 @@ const Documents = () => {
     try {
       const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/xotinQizlar`)
       const data = await response.json()
-      Setdata(data.documents)
+      Setdata(data.data)
       if (!response.ok) {
         throw new Error(response.status)
       }
@@ -46,7 +46,7 @@ const Documents = () => {
 
   const handleDownload = async (file) => {
     try {
-      const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/uploads/files/${file}`);
+      const response = await fetch(`${file}`);
       if (!response.ok) throw new Error("Файл недоступен");
 
       const blob = await response.blob();
