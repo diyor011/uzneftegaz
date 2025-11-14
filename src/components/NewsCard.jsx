@@ -112,11 +112,17 @@ const NewsCard = () => {
                             src={media.url}
                             controls
                             muted
-                            autoPlay // agar autoplay kerak bo'lsa yoqing, lekin UX uchun tavsiya etilmaydi
+                            autoPlay
                             loop
+                            playsInline // iOS uchun majburiy
                             preload="metadata"
+                            webkit-playsinline="true" // Eski iOS versiyalar uchun
                             className="w-full h-full object-cover rounded-2xl"
-                          />
+                            onError={(e) => console.error('Video yuklashda xatolik:', e)}
+                          >
+                            {/* Fallback xabar */}
+                            Sizning brauzeringiz bu video formatni qo'llab-quvvatlamaydi
+                          </video>
                         ) : (
                           <img
                             src={media.url}
