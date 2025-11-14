@@ -106,16 +106,21 @@ const NewsCard = () => {
                 {Array.isArray(item.mediaType) && item.mediaType.length > 0 ? (
                   item.mediaType.map((media, i) => (
                     <SwiperSlide key={i}>
-                      <div className="relative w-full h-full rounded-2xl">
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden">
                         {media.type === "video" ? (
                           <video
                             src={media.url}
                             controls
                             muted
-                            autoPlay // agar autoplay kerak bo'lsa yoqing, lekin UX uchun tavsiya etilmaydi
                             loop
+                            playsInline
                             preload="metadata"
                             className="w-full h-full object-cover rounded-2xl"
+                            style={{ maxHeight: '250px' }}
+                            onLoadedMetadata={(e) => {
+                              // iOS uchun video yuklangandan keyin play qilish
+                              e.target.play().catch(err => console.log('Autoplay blocked:', err));
+                            }}
                           />
                         ) : (
                           <img
