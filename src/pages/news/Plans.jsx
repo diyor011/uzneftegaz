@@ -69,7 +69,7 @@ export default function PlansReportsPage() {
   });
 
   return (
-    <div className="min-h-screen py-12 max-w-[90%] mx-auto">
+    <div className="min-h-screen px-6 max-w-[90%] mx-auto">
       <div className="flex items-center gap-2 mt-8 mb-12">
         <img src={logo} alt="Logo" />
         <h2 className="text-4xl font-bold text-info duration-300">

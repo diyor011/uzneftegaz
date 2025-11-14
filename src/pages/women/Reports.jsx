@@ -47,7 +47,7 @@ const Reports = () => {
   ];
  
     return (
-        <div className='max-w-[90%] mx-auto mt-14'>
+        <div className='max-w-[90%] mx-auto    px-6 '>
               <div
                     className="flex items-center gap-2 mt-8
                                           mb-12    "

@@ -79,7 +79,7 @@ export default function PressServicePage() {
 
 
   return (
-    <div className="min-h-screen mt-20 mx-auto max-w-[90%]">
+    <div className="min-h-screen  mx-auto max-w-[90%] px-6">
       
       <div
              className="flex items-center gap-2 mt-8
