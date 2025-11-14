@@ -117,7 +117,8 @@
     "vacanciesModalCloseBtn": "Бекор килиш",
     "vacanciesInputUpload": "Файлни танлаш учун босинг",
     "vacanciesExamplePosition": "Масалан: бухгалтер",
-    "titleCatygory": "Хотин-қизлар"
+    "titleCatygory": "Хотин-қизлар",
+    "genderEquality": "Гендер тенглиги"
   },
   "home": {
     "homeCategoryCard1": "Асосий янгиликлар",
@@ -138,6 +139,7 @@
     "milliyLiboslarDesc": "Миллий либослар — ўзбек халқининг нафис диди ва маънавий бойлигини ифодаловчи дурдона.",
     "ijtimoiyHimoyaDesc": "Ходимларга ғамхўрлик — барқарор ва самарали жамоанинг кафолати.",
     "yashilMakonDasturiDesc": "Яшил макон дастури — экологик фаровонлик ва соғлом ҳаёт сари қадам.",
-      "bizningQadriyatlarimiz": "Бизнинг қадриятларимиз"
+      "bizningQadriyatlarimiz": "Бизнинг қадриятларимиз",
+      "plansAndReports": "Режалар ва ҳисоботлар,"
   }
 }

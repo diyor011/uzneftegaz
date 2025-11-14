@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Calendar } from "lucide-react";
+
 import logo from "../../assets/minLogo.png";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +11,7 @@ import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 
 export default function IndustryNewsPage() {
-  const [hoveredNews, setHoveredNews] = useState(null);
+
   const [data, setData] = useState([]);
   const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();

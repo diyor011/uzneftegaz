@@ -116,7 +116,8 @@
     "vacanciesModalApply": "Vakansiyalarga ariza topshirish",
     "vacanciesModalCloseBtn": "Bekor qilish",
     "vacanciesInputUpload": "Faylni tanlash uchun bosing",
-    "vacanciesExamplePosition": "Masalan: buxgalter"
+    "vacanciesExamplePosition": "Masalan: buxgalter",
+    "genderEquality": "Gender tengligi"
   },
   "home": {
     "homeCategoryCard1": "Asosiy yangiliklar",
@@ -137,6 +138,7 @@
     "milliyLiboslarDesc": "Milliy liboslar — o‘zbek xalqining nafis didi va ma’naviy boyligini ifodalovchi durdona.",
     "ijtimoiyHimoyaDesc": "Xodimlarga g‘amxo‘rlik — barqaror va samarali jamoaning kafolati.",
     "yashilMakonDasturiDesc": "Yashil makon dasturi — ekologik farovonlik va sog‘lom hayot sari qadam.",
-      "bizningQadriyatlarimiz": "Bizning Qadriyatlarimiz"
+    "bizningQadriyatlarimiz": "Bizning Qadriyatlarimiz",
+    "plansAndReports": "Rejalar va hisobotlar"
   }
 }

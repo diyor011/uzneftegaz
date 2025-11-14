@@ -116,7 +116,9 @@
     "vacanciesModalApply": "Подать заявку на вакансии",
     "vacanciesModalCloseBtn": "Отменить",
     "vacanciesInputUpload": "Нажмите, чтобы выбрать файл",
-    "vacanciesExamplePosition": "Например: бухгалтер"
+    "vacanciesExamplePosition": "Например: бухгалтер",
+    "genderEquality": "Гендерное равенство"
+
   },
   "home": {
     "homeCategoryCard1": "Главные новости",
@@ -137,6 +139,7 @@
     "milliyLiboslarDesc": "Национальная одежда — жемчужина, отражающая изысканный вкус и духовное богатство узбекского народа.",
     "ijtimoiyHimoyaDesc": "Забота о сотрудниках — гарантия стабильной и эффективной команды.",
     "yashilMakonDasturiDesc": "Программа «Зеленое пространство» — шаг к экологическому благополучию и здоровой жизни.",
-    "bizningQadriyatlarimiz": "Наши ценности"
+    "bizningQadriyatlarimiz": "Наши ценности",
+    "plansAndReports": "Планы и отчёты"
   }
 }

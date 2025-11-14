@@ -79,7 +79,7 @@ const Banner = () => {
                         )}
                     </div>
 
-                    <div className="absolute z-10 inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+                    <div className="absolute  inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
                         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 max-w-4xl drop-shadow-lg">
                             {item.title[lang] || item.title.uz}
                         </h2>
@@ -100,7 +100,7 @@ const Banner = () => {
             ))}
 
             {/* Navigation dots */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 ">
                 {data.map((_, i) => (
                     <button
                         key={i}
@@ -119,7 +119,7 @@ const Banner = () => {
                 <>
                     <button
                         onClick={() => setCurrent((prev) => (prev - 1 + data.length) % data.length)}
-                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-10"
+                        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm "
                         aria-label="Previous slide"
                     >
                         <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ const Banner = () => {
                     </button>
                     <button
                         onClick={() => setCurrent((prev) => (prev + 1) % data.length)}
-                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-10"
+                        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 md:p-3 rounded-full transition-all duration-300 backdrop-blur-sm "
                         aria-label="Next slide"
                     >
                         <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
