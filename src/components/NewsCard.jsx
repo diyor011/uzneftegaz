@@ -106,23 +106,22 @@ const NewsCard = () => {
                 {Array.isArray(item.mediaType) && item.mediaType.length > 0 ? (
                   item.mediaType.map((media, i) => (
                     <SwiperSlide key={i}>
-                      <div className="relative w-full h-full rounded-2xl">
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden">
                         {media.type === "video" ? (
                           <video
                             src={media.url}
                             controls
                             muted
-                            autoPlay
                             loop
-                            playsInline // iOS uchun majburiy
+                            playsInline
                             preload="metadata"
-                            webkit-playsinline="true" // Eski iOS versiyalar uchun
                             className="w-full h-full object-cover rounded-2xl"
-                            onError={(e) => console.error('Video yuklashda xatolik:', e)}
-                          >
-                            {/* Fallback xabar */}
-                            Sizning brauzeringiz bu video formatni qo'llab-quvvatlamaydi
-                          </video>
+                            style={{ maxHeight: '250px' }}
+                            onLoadedMetadata={(e) => {
+                              // iOS uchun video yuklangandan keyin play qilish
+                              e.target.play().catch(err => console.log('Autoplay blocked:', err));
+                            }}
+                          />
                         ) : (
                           <img
                             src={media.url}
