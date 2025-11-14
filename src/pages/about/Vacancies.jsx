@@ -97,12 +97,13 @@ const Vacancies = () => {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-20 ">
+        <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
         </div>
       ) : (
         
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div>
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {data.map((item) => (
             <div
               key={item.id}
@@ -261,6 +262,7 @@ const Vacancies = () => {
             </div>
           ))}
         </div>
+      </div>
       )}
     </div>
   );
