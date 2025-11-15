@@ -62,7 +62,7 @@ export default function SportCulturePage() {
   const currentEvents = activeTab === "sport" ? sportEvents : cultureEvents;
 
   return (
-    <div className="min-h-screen mx-auto max-w-[90%] py-12 px-4">
+    <div className="min-h-screen mx-auto max-w-[90%]  px-6">
       <div className="">
         <div
           className="flex items-center gap-2 mt-8

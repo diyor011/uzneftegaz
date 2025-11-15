@@ -14,11 +14,20 @@ import { Autoplay } from "swiper/modules";
 export default function NewsPage() {
   const [hoveredNews, setHoveredNews] = useState(null);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
   const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
+  // iOS detection
+  useEffect(() => {
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    setIsIOS(iOS);
+  }, []);
+
   const getProduct = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         `https://uzneftegaz-backend-production.up.railway.app/api/industryNews`
@@ -31,18 +40,21 @@ export default function NewsPage() {
       if (result.news?.length > 0) {
         const last = result.news[result.news.length - 1];
 
-        dispatch(setLastItem({
-          pageName: "youthNews",
-          item: {
-            ...last,
-            category: "Sanoat yangiliklari",
-            path: "youth/news"
-          }
-        }));
+        dispatch(
+          setLastItem({
+            pageName: "youthNews",
+            item: {
+              ...last,
+              category: "Sanoat yangiliklari",
+              path: "youth/news",
+            },
+          })
+        );
       }
-
+      setLoading(false);
     } catch (err) {
       console.error(err);
+      setLoading(false);
     }
   };
 
@@ -51,130 +63,158 @@ export default function NewsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 md:px-12 lg:px-20">
+    <div className="min-h-screen mx-auto max-w-[90%] px-6">
       {/* HEADER */}
       <div className="flex items-center gap-2 mt-8 mb-12">
-        <img src={logo} alt="logo" className="w-10 h-10" />
+        <img src={logo} alt="logo" />
         <h2 className="text-4xl font-bold text-info">{t("about.news")}</h2>
       </div>
 
-      {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {data.map((item, index) => (
-          <div
-            key={item._id}
-            onMouseEnter={() => setHoveredNews(item._id)}
-            onMouseLeave={() => setHoveredNews(null)}
-            className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${index === 0 ? "md:col-span-2" : ""
+      {loading ? (
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {data.map((item, index) => (
+            <div
+              key={item._id}
+              onMouseEnter={() => setHoveredNews(item._id)}
+              onMouseLeave={() => setHoveredNews(null)}
+              className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${
+                index === 0 ? "md:col-span-2" : ""
               }`}
-          >
-            {/* SWIPER IMAGE */}
-            <div className="relative overflow-hidden">
-              <Swiper
-                modules={[Autoplay]}
-                autoplay={{ delay: 2500, disableOnInteraction: false }}
-                loop={true}
-                className="w-full"
-              >
-                {item.mediaType?.length > 0 ? (
-                  item.mediaType.map((media, i) => (
-                    <SwiperSlide key={i}>
-                      <div className="relative w-full rounded-2xl overflow-hidden">
-                        {media.type === "video" ? (
-                          <div className={`w-full ${index === 0 ? "h-80" : "h-60"} rounded-2xl overflow-hidden`}>
-                            <ReactPlayer
-                              url={media.url}
-                              playing={true}
-                              loop={true}
-                              muted={true}
-                              playsinline={true}
-                              controls={true}
-                              width="100%"
-                              height="100%"
-                              style={{ 
-                                borderRadius: '1rem',
-                              }}
-                              config={{
-                                file: {
-                                  attributes: {
-                                    controlsList: 'nodownload',
-                                    playsInline: true,
-                                    style: {
-                                      width: '100%',
-                                      height: '100%',
-                                      objectFit: 'cover',
+            >
+              {/* SWIPER IMAGE */}
+              <div className="relative overflow-hidden">
+                <Swiper
+                  modules={[Autoplay]}
+                  autoplay={{ delay: 2500, disableOnInteraction: false }}
+                  loop={true}
+                  className="w-full"
+                >
+                  {item.mediaType?.length > 0 ? (
+                    item.mediaType.map((media, i) => (
+                      <SwiperSlide key={i}>
+                        <div className="relative w-full rounded-2xl overflow-hidden">
+                          {media.type === "video" ? (
+                            isIOS ? (
+                              // iOS uchun ReactPlayer
+                              <div className={`w-full ${index === 0 ? "h-80" : "h-60"} rounded-2xl overflow-hidden`}>
+                                <ReactPlayer
+                                  url={media.url}
+                                  playing={true}
+                                  loop={true}
+                                  muted={true}
+                                  playsinline={true}
+                                  controls={true}
+                                  width="100%"
+                                  height="100%"
+                                  style={{ 
+                                    borderRadius: '1rem',
+                                  }}
+                                  config={{
+                                    file: {
+                                      attributes: {
+                                        controlsList: 'nodownload',
+                                        playsInline: true,
+                                        style: {
+                                          width: '100%',
+                                          height: '100%',
+                                          objectFit: 'cover',
+                                        }
+                                      }
                                     }
-                                  }
-                                }
-                              }}
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              // Boshqa qurilmalar uchun oddiy video tag
+                              <video
+                                src={media.url}
+                                controls
+                                muted
+                                loop
+                                autoPlay
+                                playsInline
+                                preload="metadata"
+                                className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
+                                onLoadedMetadata={(e) => {
+                                  e.target.play().catch(err => console.log('Autoplay blocked:', err));
+                                }}
+                              />
+                            )
+                          ) : (
+                            <img
+                              src={media.url}
+                              alt={item.title?.[lang] || `media-${i}`}
+                              className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"} transition-transform duration-700 ease-out`}
                             />
-                          </div>
-                        ) : (
-                          <img
-                            src={media.url}
-                            alt={item.title?.[lang] || `media-${i}`}
-                            className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"} transition-transform duration-700 ease-out`}
-                          />
-                        )}
+                          )}
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
-                      </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                        </div>
+                      </SwiperSlide>
+                    ))
+                  ) : (
+                    <SwiperSlide>
+                      <img
+                        src={logo}
+                        alt={item.title?.[lang]}
+                        className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
+                      />
                     </SwiperSlide>
-                  ))
-                ) : (
-                  <SwiperSlide>
-                    <img
-                      src={logo} // fallback rasm
-                      alt={item.title?.[lang]}
-                      className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
-                    />
-                  </SwiperSlide>
-                )}
-              </Swiper>
+                  )}
+                </Swiper>
 
-              {item.category && (
-                <div className="absolute top-4 left-4 z-10">
-                  <span
-                    className={`${index === 0 ? "bg-blue-700" : "bg-orange-600"
+                {item.category && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <span
+                      className={`${
+                        index === 0 ? "bg-blue-700" : "bg-orange-600"
                       } text-white px-3 py-1 rounded-lg text-xs font-semibold`}
-                  >
-                    {item.category?.[lang] || "Yangilik"}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* CONTENT */}
-            <div className="p-6">
-              <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  <span>
-                    {item.createdAt && (
-                      <span>
-                        {new Date(item.createdAt).toLocaleDateString("uz-UZ", {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                          timeZone: "Asia/Tashkent",
-                        })}
-                      </span>
-                    )}
-                  </span>
-                </div>
+                    >
+                      {item.category?.[lang] || "Yangilik"}
+                    </span>
+                  </div>
+                )}
               </div>
 
-              <h3 className="text-xl font-bold text-gray-800 mb-2 hover:text-blue-700 transition-colors cursor-pointer">
-                {item.title?.[lang]}
-              </h3>
+              {/* CONTENT */}
+              <div className="p-6">
+                <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    <span>
+                      {item.createdAt && (
+                        <span>
+                          {new Date(item.createdAt).toLocaleDateString(
+                            "uz-UZ",
+                            {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                              timeZone: "Asia/Tashkent",
+                            }
+                          )}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                </div>
 
-              <p className="text-gray-600 mb-4 line-clamp-2">
-                {item.description?.[lang]}
-              </p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 hover:text-blue-700 transition-colors cursor-pointer">
+                  {item.title?.[lang]}
+                </h3>
+
+                <p className="text-gray-600 mb-4 line-clamp-2">
+                  {item.description?.[lang]}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -24,14 +24,17 @@ import { useTranslation } from "react-i18next";
 const Documents = () => {
   const [data, Setdata] = useState([])
   const lang = useSelector((state) => state.language.lang);
+  const [loading, Setloading] = useState(false);
   const getProduct = async () => {
     try {
+      Setloading(true)
       const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/yoshlarSiyosati`)
       const data = await response.json()
       Setdata(data.documents)
       if (!response.ok) {
         throw new Error(response.status)
       }
+      Setloading(false)
     }
     catch (err) {
       console.error(err)
@@ -66,9 +69,9 @@ const Documents = () => {
 
 
   return (
-    <div className="max-w-[90%] mx-auto">
+    <div className="max-w-[90%] mx-auto px-6  ">
       <div
-        className="flex items-center gap-2 mt-16
+        className="flex items-center gap-2 mt-8
             mb-12    "
       >
         <img src={logo} alt="" />
@@ -76,7 +79,11 @@ const Documents = () => {
           {t("about.documents")}
         </h2>
       </div>
-      <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
+  {loading ? (<div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
+        </div>
+) : (
+        <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
         {data.map((item) => (
           <div
             key={item._id}
@@ -113,6 +120,7 @@ const Documents = () => {
           </div>
         ))}
       </div>
+  )}
     </div>
   );
 };

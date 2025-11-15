@@ -19,6 +19,7 @@ import logo from "../../assets/minLogo.png";
 export default function ContactChannels() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [activeTab, setActiveTab] = useState("all");
+  const [loading, setLoading] = useState(false);
 
   const channels = [
     {

@@ -22,27 +22,29 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 const Documents = () => {
-  const [data, Setdata] = useState([])
+  const [data, Setdata] = useState([]);
   const lang = useSelector((state) => state.language.lang);
+  const [loading, Setloading] = useState(false);
   const getProduct = async () => {
+    Setloading(true);
     try {
-      const response = await fetch(`https://uzneftegaz-backend-production.up.railway.app/api/xotinQizlar`)
-      const data = await response.json()
-      Setdata(data.data)
+      const response = await fetch(
+        `https://uzneftegaz-backend-production.up.railway.app/api/xotinQizlar`
+      );
+      const data = await response.json();
+      Setdata(data.data);
       if (!response.ok) {
-        throw new Error(response.status)
+        throw new Error(response.status);
       }
+      Setloading(false);
+    } catch (err) {
+      console.error(err);
     }
-    catch (err) {
-      console.error(err)
-    }
-  }
+  };
 
   useEffect(() => {
-    getProduct()
-  }, [])
-
-
+    getProduct();
+  }, []);
 
   const handleDownload = async (file) => {
     try {
@@ -64,11 +66,10 @@ const Documents = () => {
   };
   const { t } = useTranslation();
 
-
   return (
-    <div className="max-w-[90%] mx-auto">
+    <div className="max-w-[90%] mx-auto  px-6">
       <div
-        className="flex items-center gap-2 mt-16
+        className="flex items-center gap-2 mt-8
             mb-12    "
       >
         <img src={logo} alt="" />
@@ -76,7 +77,11 @@ const Documents = () => {
           {t("about.documents")}
         </h2>
       </div>
-      <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
+ {     loading ? (<div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
+        </div>
+) : (
+       <div className=" grid grid-cols-1 lg:grid-cols-2 gap-6 mt-12">
         {data.map((item) => (
           <div
             key={item._id}
@@ -96,23 +101,23 @@ const Documents = () => {
                   </p>
                 </div>
               </div>
-
             </div>
 
             <p className="text-gray-600 mb-4">{item.description?.[lang]}</p>
 
             <div className="flex items-center justify-between pt-4 border-t cursor-pointer">
-              <button onClick={() => handleDownload(item.file)} className="bg-info hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all">
+              <button
+                onClick={() => handleDownload(item.file)}
+                className="bg-info hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all"
+              >
                 <Download className="w-4 h-4" />
-
-
                 Yuklab olish
-
               </button>
             </div>
           </div>
         ))}
       </div>
+ )}
     </div>
   );
 };
