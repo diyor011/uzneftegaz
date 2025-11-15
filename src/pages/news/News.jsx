@@ -73,22 +73,32 @@ export default function NewsPage() {
                 {item.mediaType?.length > 0 ? (
                   item.mediaType.map((media, i) => (
                     <SwiperSlide key={i}>
-                      {media.type === "image" ? (
-                        <img
-                          src={media.url}
-                          alt={item.title?.[lang]}
-                          className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
-                            } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
-                        />
-                      ) : (
-                        <video
-                          src={media.url}
-                          controls
-                          className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"
-                            }`}
-                          preload="metadata"
-                        />
-                      )}
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                        {media.type === "video" ? (
+                          <video
+                            src={media.url}
+                            controls
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-cover rounded-2xl"
+                            style={{ maxHeight: '250px' }}
+                            onLoadedMetadata={(e) => {
+                              // iOS uchun video yuklangandan keyin play qilish
+                              e.target.play().catch(err => console.log('Autoplay blocked:', err));
+                            }}
+                          />
+                        ) : (
+                          <img
+                            src={media.url}
+                            alt={item.title?.[lang] || `media-${i}`}
+                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out rounded-2xl"
+                          />
+                        )}
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                      </div>
                     </SwiperSlide>
                   ))
                 ) : (

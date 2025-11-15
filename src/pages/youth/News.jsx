@@ -3,6 +3,7 @@ import { Calendar } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
+import ReactPlayer from 'react-player';
 
 import { setLastItem } from "../../redux/lastDataSlice"; // ✅ slice dan import
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -78,22 +79,46 @@ export default function NewsPage() {
                 {item.mediaType?.length > 0 ? (
                   item.mediaType.map((media, i) => (
                     <SwiperSlide key={i}>
-                      {media.type === "image" ? (
-                        <img
-                          src={media.url}
-                          alt={item.title?.[lang]}
-                          className={`w-full object-cover transition-transform duration-500 ${index === 0 ? "h-80" : "h-60"
-                            } ${hoveredNews === item._id ? "scale-110" : "scale-100"}`}
-                        />
-                      ) : (
-                        <video
-                          src={media.url}
-                          controls
-                          className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"
-                            }`}
-                          preload="metadata"
-                        />
-                      )}
+                      <div className="relative w-full rounded-2xl overflow-hidden">
+                        {media.type === "video" ? (
+                          <div className={`w-full ${index === 0 ? "h-80" : "h-60"} rounded-2xl overflow-hidden`}>
+                            <ReactPlayer
+                              url={media.url}
+                              playing={true}
+                              loop={true}
+                              muted={true}
+                              playsinline={true}
+                              controls={true}
+                              width="100%"
+                              height="100%"
+                              style={{ 
+                                borderRadius: '1rem',
+                              }}
+                              config={{
+                                file: {
+                                  attributes: {
+                                    controlsList: 'nodownload',
+                                    playsInline: true,
+                                    style: {
+                                      width: '100%',
+                                      height: '100%',
+                                      objectFit: 'cover',
+                                    }
+                                  }
+                                }
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <img
+                            src={media.url}
+                            alt={item.title?.[lang] || `media-${i}`}
+                            className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"} transition-transform duration-700 ease-out`}
+                          />
+                        )}
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                      </div>
                     </SwiperSlide>
                   ))
                 ) : (
@@ -108,7 +133,7 @@ export default function NewsPage() {
               </Swiper>
 
               {item.category && (
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 z-10">
                   <span
                     className={`${index === 0 ? "bg-blue-700" : "bg-orange-600"
                       } text-white px-3 py-1 rounded-lg text-xs font-semibold`}
