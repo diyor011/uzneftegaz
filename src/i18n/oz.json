@@ -118,7 +118,8 @@
     "vacanciesInputUpload": "Файлни танлаш учун босинг",
     "vacanciesExamplePosition": "Масалан: бухгалтер",
     "titleCatygory": "Хотин-қизлар",
-    "genderEquality": "Гендер тенглиги"
+    "genderEquality": "Гендер тенглиги",
+    "newsCenter"  : "Ёшлар маркази янгиликлари"
   },
   "home": {
     "homeCategoryCard1": "Асосий янгиликлар",
@@ -140,6 +141,7 @@
     "ijtimoiyHimoyaDesc": "Ходимларга ғамхўрлик — барқарор ва самарали жамоанинг кафолати.",
     "yashilMakonDasturiDesc": "Яшил макон дастури — экологик фаровонлик ва соғлом ҳаёт сари қадам.",
       "bizningQadriyatlarimiz": "Бизнинг қадриятларимиз",
-      "plansAndReports": "Режалар ва ҳисоботлар,"
+      "plansAndReports": "Режалар ва ҳисоботлар",
+        "plans": " ҳисоботлар"
   }
 }

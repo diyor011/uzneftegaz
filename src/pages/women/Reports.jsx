@@ -1,105 +1,113 @@
-import React from 'react'
-import { Calendar, Users, Award, Briefcase, GraduationCap, Globe } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import {
+  Calendar,
+  Users,
+  Award,
+  Briefcase,
+  GraduationCap,
+  Globe,
+} from "lucide-react";
 import logo from "../../assets/minLogo.png";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
-const Reports = () => {
-      const plans = [
-    {
-      id: 1,
-      month: "Yanvar - Mart",
-      title: "IT park ochilishi",
-      description: "Yangi IT park ochildi va 50 ta startup joylashtirildi",
-      participants: "50 startup",
-      icon: Briefcase,
-      color: "bg-info",
-      status: "Bajarildi"
-    },
-    {
-      id: 2,
-      month: "Aprel - Iyun",
-      title: "Yoshlar forumi",
-      description: "Respublika yoshlar forumi o'tkazildi",
-      participants: "800 ishtirokchi",
-      icon: Users,
-      color: "bg-orange-400",
-      status: "Bajarildi"
-    },
-    {
-      id: 3,
-      month: "Iyul - Sentabr",
-      title: "Sport musobaqalari",
-      description: "Viloyatlar o'rtasida sport musobaqalari",
-      participants: "2000 sportchi",
-      icon: Award,
-      color: "bg-info",
-      status: "Bajarildi"
-    },
-    {
-      id: 4,
-      month: "Oktabr - Dekabr",
-      title: "Yangi dasturlar joriy etildi",
-      description: "Elektron xizmatlar platformasi ishga tushirildi",
-      participants: "Barcha fuqarolar",
-      icon: Globe,
-      color: "bg-orange-500",
-      status: "Bajarildi"
+export default function PlansReportsPage() {
+  const lang = useSelector((state) => state.language.lang);
+  const { t } = useTranslation();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const iconMap = {
+    Award,
+    GraduationCap,
+    Globe,
+    Users,
+    Briefcase,
+    Calendar,
+  };
+
+  const GetPlans = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        "https://uzneftegaz-backend-production.up.railway.app/api/hisobot"
+      );
+      const result = await response.json();
+      setData(result.reports);
+    } catch (error) {
+      console.error("Error fetching:", error);
+    } finally {
+      setLoading(false);
     }
-  ];
- 
-    return (
-        <div className='max-w-[90%] mx-auto    px-6 '>
-              <div
-                    className="flex items-center gap-2 mt-8
-                                          mb-12    "
-                  >
-                    <img src={logo} alt="" />
-                    <h2 className="text-4xl font-bold  text-info duration-300">
-                      Hisobotlar <span className="text-[#EE7427]"></span>{" "}
-                    </h2>
-                  </div>
+  };
 
+  useEffect(() => {
+    GetPlans();
+  }, []);
 
-           <div className="grid md:grid-cols-2 gap-8">
-          {plans.map((plan) => {
-            const Icon = plan.icon;
+  return (
+    <div className="min-h-screen px-6 max-w-[90%] mx-auto">
+      <div className="flex items-center gap-2 mt-8 mb-12">
+        <img src={logo} alt="Logo" />
+        <h2 className="text-4xl font-bold text-info duration-300">
+          {t("home.plans")}
+        </h2>
+      </div>
+
+      {loading ? (
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 gap-8">
+          {data.map((plan) => {
+            const IconComponent = iconMap[plan.icon] || Calendar;
+
             return (
               <div
-                key={plan.id}
+                key={plan._id}
                 className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-16 h-16 ${plan.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                    <Icon className="w-8 h-8 text-white" />
+                  <div
+                    className={`w-16 h-16 ${
+                      plan.color || "bg-info"
+                    } rounded-xl flex items-center justify-center`}
+                  >
+                    <IconComponent className="w-8 h-8 text-white" />
                   </div>
+
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-sm font-semibold text-gray-500">{plan.month}</span>
-                      {plan.status && (
+                      <span className="text-sm font-semibold text-gray-500">
+                        {plan.startMonth?.[lang]} - {plan.endMonth?.[lang]}
+                      </span>
+                      {plan.plan && (
                         <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">
-                          {plan.status}
+                          {plan.plan?.[lang]}
                         </span>
                       )}
                     </div>
+
                     <h3 className="text-2xl font-bold text-gray-800">
-                      {plan.title}
+                      {plan.title?.[lang]}
                     </h3>
                   </div>
                 </div>
 
                 <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                  {plan.description}
+                  {plan.description?.[lang]}
                 </p>
 
                 <div className="flex items-center gap-2 text-gray-700 font-semibold">
                   <Users className="w-5 h-5 text-cyan-600" />
-                  <span>{plan.participants}</span>
+                  <span>{plan.participantsCount}</span>
                 </div>
               </div>
             );
           })}
         </div>
-        </div>
-    )
+      )}
+    </div>
+  );
 }
-
-export default Reports

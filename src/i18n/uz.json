@@ -117,7 +117,8 @@
     "vacanciesModalCloseBtn": "Bekor qilish",
     "vacanciesInputUpload": "Faylni tanlash uchun bosing",
     "vacanciesExamplePosition": "Masalan: buxgalter",
-    "genderEquality": "Gender tengligi"
+    "genderEquality": "Gender tengligi",
+    "newsCenter": "Yoshlar markazi yangiliklari"
   },
   "home": {
     "homeCategoryCard1": "Asosiy yangiliklar",
@@ -139,6 +140,7 @@
     "ijtimoiyHimoyaDesc": "Xodimlarga g‘amxo‘rlik — barqaror va samarali jamoaning kafolati.",
     "yashilMakonDasturiDesc": "Yashil makon dasturi — ekologik farovonlik va sog‘lom hayot sari qadam.",
     "bizningQadriyatlarimiz": "Bizning Qadriyatlarimiz",
-    "plansAndReports": "Rejalar va hisobotlar"
+    "plansAndReports": "Rejalar va hisobotlar",
+     "plans": " hisobotlar"
   }
 }

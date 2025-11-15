@@ -117,7 +117,8 @@
     "vacanciesModalCloseBtn": "Отменить",
     "vacanciesInputUpload": "Нажмите, чтобы выбрать файл",
     "vacanciesExamplePosition": "Например: бухгалтер",
-    "genderEquality": "Гендерное равенство"
+    "genderEquality": "Гендерное равенство",
+    "newsCenter" : "Новости молодёжного центра"
 
   },
   "home": {
@@ -140,6 +141,7 @@
     "ijtimoiyHimoyaDesc": "Забота о сотрудниках — гарантия стабильной и эффективной команды.",
     "yashilMakonDasturiDesc": "Программа «Зеленое пространство» — шаг к экологическому благополучию и здоровой жизни.",
     "bizningQadriyatlarimiz": "Наши ценности",
-    "plansAndReports": "Планы и отчёты"
+    "plansAndReports": "Планы и отчёты",
+     "plans": " Отчёты"
   }
 }
