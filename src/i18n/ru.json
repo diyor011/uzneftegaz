@@ -92,6 +92,27 @@
           "path": "/news/plans"
         }
       ]
+    },
+    {
+      "title": "профсоюз",
+      "items": [
+        {
+          "label": "нормативные документы",
+          "path": "/organized/document"
+        },
+        {
+          "label": "новости",
+          "path": "organized/news"
+        },
+        {
+          "label": "мероприятия",
+          "path": "organized/events"
+        },
+        {
+          "label": "поддержка сотрудников",
+          "path": "organized/staffhelp"
+        }
+      ]
     }
   ],
   "about": {
@@ -118,8 +139,7 @@
     "vacanciesInputUpload": "Нажмите, чтобы выбрать файл",
     "vacanciesExamplePosition": "Например: бухгалтер",
     "genderEquality": "Гендерное равенство",
-    "newsCenter" : "Новости молодёжного центра"
-
+    "newsCenter": "Новости молодёжного центра"
   },
   "home": {
     "homeCategoryCard1": "Главные новости",
@@ -142,9 +162,9 @@
     "yashilMakonDasturiDesc": "Программа «Зеленое пространство» — шаг к экологическому благополучию и здоровой жизни.",
     "bizningQadriyatlarimiz": "Наши ценности",
     "plansAndReports": "Планы и отчёты",
-     "plans": " Отчёты",
-      "sport": "Спорт",
-        "culture": "Культура",
-        "va" : "и"
+    "plans": " Отчёты",
+    "sport": "Спорт",
+    "culture": "Культура",
+    "va": "и"
   }
 }

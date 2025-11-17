@@ -92,6 +92,27 @@
           "path": "/news/plans"
         }
       ]
+    },
+    {
+      "title": "kasaba uyishmasi",
+      "items": [
+        {
+          "label": "meyoriy xujatlar",
+          "path": "/organized/document"
+        },
+        {
+          "label": "yangiliklar",
+          "path": "organized/news"
+        },
+        {
+          "label": "tadbirlar",
+          "path": "organized/events"
+        },
+        {
+          "label": "xodimlarni qollap quvatlash",
+          "path": "organized/staffhelp"
+        }
+      ]
     }
   ],
   "about": {
@@ -141,9 +162,9 @@
     "yashilMakonDasturiDesc": "Yashil makon dasturi — ekologik farovonlik va sog‘lom hayot sari qadam.",
     "bizningQadriyatlarimiz": "Bizning Qadriyatlarimiz",
     "plansAndReports": "Rejalar va hisobotlar",
-     "plans": " hisobotlar",
-     "sport": "Sport",
-      "culture": "Madaniyat",
-      "va" : "va"
+    "plans": " hisobotlar",
+    "sport": "Sport",
+    "culture": "Madaniyat",
+    "va": "va"
   }
 }

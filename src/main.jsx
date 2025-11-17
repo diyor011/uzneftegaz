@@ -1,30 +1,32 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './pages/Home.jsx'
-import { Provider } from 'react-redux'
-import store from './redux/store.js'
-import Leadership from './pages/about/Leadership.jsx'
-import Departments from './pages/about/Departments.jsx'
-import HonoraryStaff from './pages/about/HonoraryStaff.jsx'
-import DocumentsAb from './pages/about/Documents.jsx'
-import Vacancies from './pages/about/Vacancies.jsx'
-import Documents from './pages/anti-corruption/Documents.jsx'
-import Contacts from './pages/anti-corruption/Contacts.jsx'
-import Youthnews from './pages/youth/News.jsx'
-import YouthCenternews from './pages/youth/CenterNews.jsx'
-import Youthdocuments from './pages/youth/Documents.jsx'
-import SportCulture from './pages/youth/SportCulture.jsx'
-import WomenNews from './pages/women/News.jsx'
-import WomenReports from './pages/women/Reports.jsx'
-import GenderEquality from './pages/women/GenderEquality.jsx'
-import News from './pages/news/News.jsx'
-import NewsPress from './pages/news/Press.jsx'
-import NewsPlans from './pages/news/Plans.jsx'
-
-
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
+import Leadership from "./pages/about/Leadership.jsx";
+import Departments from "./pages/about/Departments.jsx";
+import HonoraryStaff from "./pages/about/HonoraryStaff.jsx";
+import DocumentsAb from "./pages/about/Documents.jsx";
+import Vacancies from "./pages/about/Vacancies.jsx";
+import Documents from "./pages/anti-corruption/Documents.jsx";
+import Contacts from "./pages/anti-corruption/Contacts.jsx";
+import Youthnews from "./pages/youth/News.jsx";
+import YouthCenternews from "./pages/youth/CenterNews.jsx";
+import Youthdocuments from "./pages/youth/Documents.jsx";
+import SportCulture from "./pages/youth/SportCulture.jsx";
+import WomenNews from "./pages/women/News.jsx";
+import WomenReports from "./pages/women/Reports.jsx";
+import GenderEquality from "./pages/women/GenderEquality.jsx";
+import News from "./pages/news/News.jsx";
+import NewsPress from "./pages/news/Press.jsx";
+import NewsPlans from "./pages/news/Plans.jsx";
+import OrganizedDocument from "./pages/organized/Document.jsx";
+import OrganizedNews from "./pages/organized/News.jsx";
+import OrganizedEvents from "./pages/organized/Events.jsx";
+import OrganizedStaff from "./pages/organized/Staffhelp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,79 +40,94 @@ const router = createBrowserRouter([
       },
       {
         path: "about/leadership",
-        element: <Leadership />
+        element: <Leadership />,
       },
       {
         path: "about/departments",
-        element: <Departments />
+        element: <Departments />,
       },
       {
         path: "about/honorary-staff",
-        element: <HonoraryStaff />
+        element: <HonoraryStaff />,
       },
       {
         path: "about/documents",
-        element: <DocumentsAb />
+        element: <DocumentsAb />,
       },
       {
         path: "about/vacancies",
-        element: <Vacancies />
+        element: <Vacancies />,
       },
       {
         path: "anti-corruption/documents",
-        element: <Documents />
+        element: <Documents />,
       },
       {
         path: "anti-corruption/contacts",
-        element: <Contacts />
+        element: <Contacts />,
       },
       {
         path: "youth/news",
-        element: <Youthnews />
+        element: <Youthnews />,
       },
       {
         path: "youth/documents",
-        element: <Youthdocuments />
+        element: <Youthdocuments />,
       },
       {
         path: "youth/sport-culture",
-        element: <SportCulture />
+        element: <SportCulture />,
       },
       {
         path: "youth/center-news",
-        element: <YouthCenternews />
+        element: <YouthCenternews />,
       },
       {
         path: "women/news",
-        element: <WomenNews />
+        element: <WomenNews />,
       },
       {
         path: "women/gender-equality",
-        element: <GenderEquality />
+        element: <GenderEquality />,
       },
       {
         path: "women/reports",
-        element: <WomenReports />
+        element: <WomenReports />,
       },
       {
         path: "news",
-        element: <News />
+        element: <News />,
       },
       {
         path: "news/press",
-        element: <NewsPress />
+        element: <NewsPress />,
       },
       {
         path: "news/Plans",
-        element: <NewsPlans />
+        element: <NewsPlans />,
+      },
+      {
+        path: "/organized/document",
+        element: <OrganizedDocument />,
+      },
+      {
+        path: "/organized/news",
+        element: <OrganizedNews />,
+      },
+      {
+        path: "/organized/events",
+        element: <OrganizedEvents />,
+      },
+        {
+        path: "/organized/staffhelp",
+        element: <OrganizedStaff />,
       },
     ],
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-
     <RouterProvider router={router} />
   </Provider>
-)
+);

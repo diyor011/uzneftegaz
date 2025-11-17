@@ -92,7 +92,29 @@
           "path": "/news/plans"
         }
       ]
+    },
+    {
+  "title": "касаба уюшмаси",
+  "items": [
+    {
+      "label": "меъёрий ҳужжатлар",
+      "path": "/organized/document"
+    },
+    {
+      "label": "янгиликлар",
+      "path": "organized/news"
+    },
+    {
+      "label": "тадбирлар",
+      "path": "organized/events"
+    },
+    {
+      "label": "ходимларни қўллаб-қувватлаш",
+      "path": "organized/staffhelp"
     }
+  ]
+}
+
   ],
   "about": {
     "title": "Биз ҳақимизда",
