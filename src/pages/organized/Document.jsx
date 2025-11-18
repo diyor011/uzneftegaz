@@ -29,10 +29,10 @@ const Documents = () => {
     try {
       Setloading(true);
       const response = await fetch(
-        `https://uzneftegaz-backend-production.up.railway.app/api/yoshlarSiyosati`
+        `https://uzneftegaz-backend-production.up.railway.app/api/kasabaDocuments`
       );
       const data = await response.json();
-      Setdata(data.documents);
+      Setdata(data.data);
       if (!response.ok) {
         throw new Error(response.status);
       }

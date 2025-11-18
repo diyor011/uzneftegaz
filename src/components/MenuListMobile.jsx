@@ -44,7 +44,7 @@ const MenuList = ({ dropdowns }) => {
                                     <li key={idx}>
                                         <Link
                                             to={item.path || "#"}
-                                            className="block px-5 py-2 border-b border-base-300 shadow hover:text-[#00A2DE]"
+                                            className="block px-4 py-2 border-b border-base-300 shadow hover:text-[#00A2DE]"
                                         >
                                             {item.label || item}
                                         </Link>
