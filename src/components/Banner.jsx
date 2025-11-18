@@ -26,6 +26,41 @@ const Banner = () => {
       setLoading(false);
     }
   };
+  const SwiperSkeleton = () => {
+    return (
+      <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-lg overflow-hidden mt-4 relative bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200">
+        {/* Shimmer effect */}
+        <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+
+        {/* Banner content skeleton */}
+        <div className="relative h-full flex items-center justify-center p-8 md:p-12 lg:p-16">
+          <div className="max-w-4xl w-full space-y-6">
+            {/* Main title skeleton */}
+            <div className="space-y-3">
+              <div className="h-8 md:h-12 lg:h-16 bg-gray-300/70 rounded-lg w-3/4 mx-auto" />
+              <div className="h-8 md:h-12 lg:h-16 bg-gray-300/70 rounded-lg w-2/3 mx-auto" />
+            </div>
+
+            {/* Subtitle skeleton */}
+            <div className="space-y-2 pt-4">
+              <div className="h-4 md:h-5 bg-gray-300/60 rounded w-5/6 mx-auto" />
+              <div className="h-4 md:h-5 bg-gray-300/60 rounded w-4/6 mx-auto" />
+            </div>
+
+            {/* CTA buttons skeleton */}
+            <div className="flex justify-center space-x-4 pt-6">
+              <div className="h-12 md:h-14 bg-gray-300/70 rounded-lg w-32 md:w-40" />
+              <div className="h-12 md:h-14 bg-gray-300/70 rounded-lg w-32 md:w-40" />
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative circles */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-gray-300/30 rounded-full blur-2xl" />
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-gray-300/30 rounded-full blur-2xl" />
+      </div>
+    );
+  };
 
   useEffect(() => {
     getBanner();
@@ -47,8 +82,8 @@ const Banner = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center py-20">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
+      <div className="flex gap-4">
+        <SwiperSkeleton />
       </div>
     );
   }
