@@ -53,7 +53,7 @@ export default function SportCulturePage() {
       </div>
 
       {/* Toggle */}
-      <div className="flex justify-center gap-4 mb-12">
+      <div className="flex justify-center gap-4 mb-12 flex-wrap">
         <button
           onClick={() => setActiveTab("sport")}
           className={`flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-lg transition-all ${
