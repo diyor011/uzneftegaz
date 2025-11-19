@@ -92,7 +92,7 @@ export default function HonoraryEmployees() {
                   {/* Stats Mini */}
                   <div className="grid grid-cols-3 gap-3 mb-4">
                     <div className="text-center bg-yellow-50 rounded-lg py-2">
-                      <div className="text-xl font-bold text-orange-400">
+                      <div className="text-sm lg:text-xl font-bold text-orange-400">
                         {employee.experience?.[lang]}
                       </div>
                       <div className="text-xs text-gray-600">
@@ -101,7 +101,7 @@ export default function HonoraryEmployees() {
                       </div>
                     </div>
                     <div className="text-center bg-orange-50 rounded-lg py-2">
-                      <div className="text-xl font-bold text-orange-400">
+                      <div className=" text-sm lg:text-xl font-bold text-orange-400">
                         {employee.project?.[lang]}+
                       </div>
                       <div className="text-xs text-gray-600">
@@ -109,7 +109,7 @@ export default function HonoraryEmployees() {
                       </div>
                     </div>
                     <div className="text-center bg-red-50 rounded-lg py-2">
-                      <div className="text-xl font-bold text-info">
+                      <div className="text-sm lg:text-xl font-bold text-info">
                         {employee.grade?.[lang]}%
                       </div>
                       <div className="text-xs text-gray-600">
