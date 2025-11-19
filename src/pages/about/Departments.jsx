@@ -48,7 +48,7 @@ export default function Departments() {
       >
         <img src={logo} alt="" />
         <h2 className="text-4xl font-bold  text-info duration-300">
-          Tarkibiy <span className="text-[#EE7427]">Bo'limlar</span>{" "}
+              {t("about.departments")}
         </h2>
       </div>
 
