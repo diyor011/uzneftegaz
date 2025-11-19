@@ -70,7 +70,7 @@ const Leadership = () => {
           {data.map((item) => (
             <div
               key={item._id}
-              className="bg-white max-h-[350px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="bg-white min-h-[400px] lg:max-h-[350px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <div className="flex flex-col md:flex-row">
                 {/* Photo */}
@@ -84,10 +84,10 @@ const Leadership = () => {
 
                 {/* Info */}
                 <div className="md:w-2/3 p-6 lg:p-8">
-                  <h3 className="text-4xl font-bold text-info mb-4">
+                  <h3 className="text-lg mb-2  lg:text-4xl font-bold text-info lg:mb-4">
                     {item.fullName?.[lang]}
                   </h3>
-                  <p className="text-orange-600 font-semibold mb-4 text-lg">
+                  <p className="text-orange-600 text-md font-semibold lg:mb-4 lg:text-lg">
                     {item.grade?.[lang]}
                   </p>
 
