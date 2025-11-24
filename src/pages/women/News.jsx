@@ -90,11 +90,7 @@ export default function IndustryNewsPage() {
                             alt={item.title?.[lang]}
                             className={`w-full object-cover transition-transform duration-500 ${
                               index === 0 ? "h-80" : "h-60"
-                            } ${
-                              hoveredNews === item._id
-                                ? "scale-110"
-                                : "scale-100"
-                            }`}
+                            } `}
                           />
                         ) : (
                           <video
@@ -141,7 +137,7 @@ export default function IndustryNewsPage() {
                 <h3 className="text-xl font-bold text-gray-800 mb-2 hover:text-blue-700 transition-colors cursor-pointer">
                   {item.title?.[lang]}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p className="text-gray-600 mb-4 ">
                   {item.description?.[lang]}
                 </p>
               </div>

@@ -135,10 +135,10 @@ export default function EventsPage() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 line-clamp-2">
+                  <h3 className="text-xl font-bold mb-3">
                     {title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                  <p className="text-gray-600 text-sm mb-4 ">
                     {description}
                   </p>
 

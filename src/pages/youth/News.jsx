@@ -135,7 +135,7 @@ export default function NewsPage() {
                                 controls
                                 muted
                                 loop
-                                autoPlay
+                               
                                 playsInline
                                 preload="metadata"
                                 className={`w-full object-cover ${index === 0 ? "h-80" : "h-60"}`}
@@ -207,7 +207,7 @@ export default function NewsPage() {
                   {item.title?.[lang]}
                 </h3>
 
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p className="text-gray-600 mb-4 ">
                   {item.description?.[lang]}
                 </p>
               </div>

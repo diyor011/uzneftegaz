@@ -66,7 +66,7 @@ const Leadership = () => {
           <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
         </div>
       ) : (
-        <div>
+        <div className="flex flex-col gap-5">
           {data.map((item) => (
             <div
               key={item._id}

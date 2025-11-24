@@ -111,7 +111,6 @@ const NewsCard = () => {
                           <video
                             src={media.url}
                             controls
-                            muted
                             loop
                             playsInline
                             preload="metadata"
@@ -170,7 +169,7 @@ const NewsCard = () => {
                   {item.title?.[lang]}
                 </h3>
 
-                <p className="text-gray-800 mb-6 line-clamp-3">
+                <p className="text-gray-800 mb-6 line-clamp-1">
                   {item.description?.[lang]}
                 </p>
               </div>
