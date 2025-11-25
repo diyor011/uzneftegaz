@@ -16,11 +16,13 @@ import {
   Mail,
   MapPin,
   ExternalLink,
+  House,
 } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Leadership = () => {
   const [data, Setdata] = useState([]);
@@ -52,13 +54,19 @@ const Leadership = () => {
   return (
     <div className="max-w-[90%] mx-auto  flex flex-col gap-8 px-6 mb-12">
       <div
-        className="flex items-center gap-2 mt-8
+        className="flex justify-center gap-2 mt-8 flex-col
                 "
       >
-        <img src={logo} alt="" />
-        <h2 className="text-4xl font-bold  text-info duration-300">
-          {t("about.leadership")}
-        </h2>
+        <div className="flex items-center">
+          <img src={logo} alt="" />
+          <h2 className="text-4xl font-bold  text-info duration-300">
+            {t("about.leadership")}
+          </h2>
+        </div>
+        <Link to={'/'} className="flex items-center gap-2 btn btn-info w-max">
+          <House  className="text-base-100"/>
+          <h2 className="text-lg font-bold  text-base-100 duration-300">{t("home.back")}</h2>
+        </Link>
       </div>
 
       {loading ? (

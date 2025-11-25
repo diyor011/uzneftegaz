@@ -112,7 +112,7 @@ const NewsCard = () => {
                             src={media.url}
                             controls
                             loop
-                            playsInline
+                            
                             preload="metadata"
                             className="w-full h-full object-cover rounded-2xl"
                             style={{ maxHeight: '250px' }}
