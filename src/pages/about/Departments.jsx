@@ -7,11 +7,13 @@ import {
   Shield,
   Briefcase,
   Users,
-  ChevronDown,
+  ChevronLeft,
+
 } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Departments() {
   const [expandedDept, setExpandedDept] = useState(null);
@@ -43,18 +45,27 @@ export default function Departments() {
   return (
     <div className="min-h-screen max-w-[90%] mx-auto px-6">
       <div
-        className="flex items-center gap-2 mt-8
-            mb-12    "
+        className="flex justify-center gap-2 mt-8 flex-col 
+                "
       >
-        <img src={logo} alt="" />
+      <div className="flex  items-center">
+          <img src={logo} alt="" />
         <h2 className="text-4xl font-bold  text-info duration-300">
-              {t("about.departments")}
+          {t("about.departments")}
         </h2>
       </div>
+        <Link to={'/'} className="flex items-center px-2 ">
+          <ChevronLeft className="text-info text-4xl" />
+          <p className="text-info font-bold"> {t("home.back")}</p>
+
+        </Link>
+      </div>
+
+
 
       {/* Stats Overview */}
 
-      <div className="  pb-20">
+      <div className="  py-20">
         {loading ? (
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>

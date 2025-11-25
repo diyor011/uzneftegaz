@@ -1,22 +1,9 @@
 import React, { useState } from "react";
 import {
   Calendar,
-  User,
-  Download,
-  Share2,
-  Eye,
-  ChevronRight,
-  FileText,
-  Image,
-  Video,
-  Users,
-  Award,
-  Briefcase,
   Phone,
   Mail,
-  MapPin,
-  ExternalLink,
-  House,
+  ChevronLeft
 } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useEffect } from "react";
@@ -63,10 +50,11 @@ const Leadership = () => {
             {t("about.leadership")}
           </h2>
         </div>
-        {/* <Link to={'/'} className="flex items-center gap-2 btn btn-info w-max">
-          <House  className="text-base-100"/>
-          <h2 className="text-lg font-bold  text-base-100 duration-300">{t("home.back")}</h2>
-        </Link> */}
+        <Link to={'/'} className="flex items-center px-2 ">
+          <ChevronLeft className="text-info text-4xl" />
+           <p className="text-info font-bold"> {t("home.back")}</p>
+          
+        </Link>
       </div>
 
       {loading ? (

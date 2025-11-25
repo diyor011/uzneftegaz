@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  Award,
-  Star,
-  Trophy,
   Medal,
-  Target,
-  Zap,
-  Heart,
-  TrendingUp,
+  ChevronLeft
 } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function HonoraryEmployees() {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -44,13 +39,20 @@ export default function HonoraryEmployees() {
   return (
     <div className="min-h-screen max-w-[90%] mx-auto px-6">
       <div
-        className="flex items-center gap-2 mt-8
-            mb-12    "
+        className="flex justify-center gap-2 mt-8
+            mb-12    flex-col  "
       >
-        <img src={logo} alt="" />
+        <div className="flex items-center">
+           <img src={logo} alt="" />
         <h2 className="text-4xl font-bold  text-info duration-300">
           {t("about.honoraryStaff")}
         </h2>
+        </div>
+          <Link to={'/'} className="flex items-center px-2 ">
+          <ChevronLeft className="text-info text-4xl" />
+          <p className="text-info font-bold"> {t("home.back")}</p>
+
+        </Link>
       </div>
 
       {/* Employees Grid */}

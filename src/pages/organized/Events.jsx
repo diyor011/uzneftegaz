@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Calendar, MapPin, Clock, Users, Play } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default function EventsPage() {
   const [data, setData] = useState([]);
@@ -12,7 +18,6 @@ export default function EventsPage() {
   const getEvents = async () => {
     try {
       setLoading(true);
-
       const res = await fetch(
         "https://uzneftegaz-backend-production.up.railway.app/api/tadbirlar/all"
       );
@@ -34,7 +39,6 @@ export default function EventsPage() {
     getEvents();
   }, []);
 
-  // FILTER BY CATEGORY (translation support)
   const [filter, setFilter] = useState("all");
 
   const uniqueCategories = Array.from(
@@ -48,7 +52,6 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen max-w-[90%] mx-auto px-6">
-      {/* Title */}
       <div className="flex items-center gap-2 mt-8 mb-12">
         <img src={logo} alt="logo" />
         <h2 className="text-4xl font-bold text-info">Tadbirlar</h2>
@@ -59,11 +62,10 @@ export default function EventsPage() {
         <div className="flex flex-wrap gap-3">
           <button
             onClick={() => setFilter("all")}
-            className={`px-6 py-2 rounded-full font-semibold ${
-              filter === "all"
-                ? "bg-info text-white shadow-lg"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`}
+            className={`px-6 py-2 rounded-full font-semibold ${filter === "all"
+              ? "bg-info text-white shadow-lg"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+              }`}
           >
             Barchasi
           </button>
@@ -72,11 +74,10 @@ export default function EventsPage() {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2 rounded-full font-semibold ${
-                filter === cat
-                  ? "bg-orange-400 text-white shadow-lg"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
+              className={`px-6 py-2 rounded-full font-semibold ${filter === cat
+                ? "bg-orange-400 text-white shadow-lg"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                }`}
             >
               {cat}
             </button>
@@ -87,9 +88,8 @@ export default function EventsPage() {
       {/* EVENTS GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
         {loading ? (
-          <div className="text-center py-12">
-            <div className="animate-spin h-12 w-12 border-b-2 border-info rounded-full mx-auto" />
-            <p className="text-gray-500 mt-4">Yuklanmoqda...</p>
+          <div className="col-span-full flex justify-center items-center py-20 min-h-[300px]">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-info"></div>
           </div>
         ) : filteredEvents.length === 0 ? (
           <p className="text-gray-500 col-span-full">Tadbirlar topilmadi.</p>
@@ -99,50 +99,59 @@ export default function EventsPage() {
             const description = event.description?.[lang] || "";
             const location = event.location?.[lang] || "";
             const category = event.category?.[lang] || "";
-            const media = event.mediaType?.[0];
-            const image = media?.url;
-            const isVideo = media?.type === "video";
 
             return (
               <div
                 key={event._id}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
               >
-                {/* Image */}
                 <div className="relative h-56">
-                  {image ? (
-                    <img
-                      src={image}
-                      className="w-full h-full object-cover"
-                      alt={title}
-                    />
-                  ) : (
-                    <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                      <span className="text-gray-400">Rasm yo'q</span>
-                    </div>
-                  )}
-
-                  {isVideo && (
-                    <div className="absolute top-4 right-4 bg-orange-400 text-white p-3 rounded-full shadow-lg">
-                      <Play size={24} />
-                    </div>
-                  )}
+                  <Swiper
+                    modules={[Pagination, Autoplay]}
+                    pagination={{ clickable: true }}
+                    autoplay={{
+                      delay: 2500,
+                      disableOnInteraction: false,
+                    }}
+                    className="h-full"
+                  >
+                    {event.mediaType?.length ? (
+                      event.mediaType.map((media, idx) => (
+                        <SwiperSlide key={idx}>
+                          {media.type === "video" ? (
+                            <video
+                              className="w-full h-full object-cover"
+                              src={media.url}
+                              controls
+                            />
+                          ) : (
+                            <img
+                              src={media.url}
+                              className="w-full h-full object-cover"
+                              alt={title}
+                            />
+                          )}
+                        </SwiperSlide>
+                      ))
+                    ) : (
+                      <SwiperSlide>
+                        <div className="bg-gray-100 w-full h-full flex items-center justify-center">
+                          <span className="text-gray-400">Media yo'q</span>
+                        </div>
+                      </SwiperSlide>
+                    )}
+                  </Swiper>
 
                   <div className="absolute bottom-0 left-0 bg-black/60 px-4 py-1 text-white rounded-tr-2xl">
                     {category}
                   </div>
                 </div>
 
-                {/* Content */}
+                {/* CONTENT */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3">
-                    {title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 ">
-                    {description}
-                  </p>
+                  <h3 className="text-xl font-bold mb-3">{title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{description}</p>
 
-                  {/* Details */}
                   <div className="space-y-2 text-gray-700">
                     <div className="flex items-center">
                       <Calendar className="w-5 h-5 mr-2 text-orange-400" />
@@ -166,8 +175,6 @@ export default function EventsPage() {
                       {event.users || 0} ishtirokchi
                     </div>
                   </div>
-
-              
                 </div>
               </div>
             );

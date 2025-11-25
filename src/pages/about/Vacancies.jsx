@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/minLogo.png";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Briefcase, FileText, X, Upload } from "lucide-react";
+import { Briefcase, FileText, X, Upload , ChevronLeft} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Vacancies = () => {
   const [file, setFile] = useState(null);
@@ -89,11 +90,18 @@ const Vacancies = () => {
 
   return (
     <div className="max-w-[90%] mx-auto px-6 mb-12">
-      <div className="flex items-center gap-2 mt-8 mb-12">
-        <img src={logo} alt="" />
+      <div className="flex justify-center gap-2 mt-8 mb-12 flex-col ">
+        <div className="flex items-center">
+          <img src={logo} alt="" />
         <h2 className="text-4xl font-bold text-info duration-300">
           {t("about.vacancies")}
         </h2>
+        </div>
+          <Link to={'/'} className="flex items-center px-2 ">
+          <ChevronLeft className="text-info text-4xl" />
+          <p className="text-info font-bold"> {t("home.back")}</p>
+
+        </Link>
       </div>
 
       {loading ? (

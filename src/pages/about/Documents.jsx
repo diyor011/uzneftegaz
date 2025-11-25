@@ -1,25 +1,13 @@
 import React, { useEffect, useState } from "react";
 import {
-  Calendar,
-  User,
   Download,
-  Share2,
-  Eye,
-  ChevronRight,
   FileText,
-  Image,
-  Video,
-  Users,
-  Award,
-  Briefcase,
-  Phone,
-  Mail,
-  MapPin,
-  ExternalLink,
+  ChevronLeft
 } from "lucide-react";
 import logo from "../../assets/minLogo.png";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Documents = () => {
   const [data, Setdata] = useState([]);
@@ -70,13 +58,20 @@ const Documents = () => {
   return (
     <div className="max-w-[90%] mx-auto px-6">
       <div
-        className="flex items-center gap-2 mt-8
-            mb-12    "
+        className="flex justify-center gap-2 mt-8
+            mb-12   flex-col  "
       >
-        <img src={logo} alt="" />
+       <div className="flex items-center">
+         <img src={logo} alt="" />
         <h2 className="text-4xl font-bold  text-info duration-300">
           {t("about.documents")}
         </h2>
+       </div>
+         <Link to={'/'} className="flex items-center px-2 ">
+          <ChevronLeft className="text-info text-4xl" />
+          <p className="text-info font-bold"> {t("home.back")}</p>
+
+        </Link>
       </div>
       {loading ? (
         <div className="flex justify-center items-center py-20">
