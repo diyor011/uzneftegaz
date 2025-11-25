@@ -94,22 +94,22 @@
       ]
     },
     {
-      "title": "касаба уюшмаси",
+      "title": "Касаба уюшмаси",
       "items": [
         {
-          "label": "меъёрий ҳужжатлар",
+          "label": "Меъёрий ҳужжатлар",
           "path": "/organized/document"
         },
         {
-          "label": "янгиликлар",
+          "label": "Янгиликлар",
           "path": "organized/news"
         },
         {
-          "label": "тадбирлар",
+          "label": "Тадбирлар",
           "path": "organized/events"
         },
         {
-          "label": "ходимларни қўллаб-қувватлаш",
+          "label": "Ходимларни қўллаб-қувватлаш",
           "path": "organized/staffhelp"
         }
       ]

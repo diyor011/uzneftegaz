@@ -63,10 +63,10 @@ const Leadership = () => {
             {t("about.leadership")}
           </h2>
         </div>
-        <Link to={'/'} className="flex items-center gap-2 btn btn-info w-max">
+        {/* <Link to={'/'} className="flex items-center gap-2 btn btn-info w-max">
           <House  className="text-base-100"/>
           <h2 className="text-lg font-bold  text-base-100 duration-300">{t("home.back")}</h2>
-        </Link>
+        </Link> */}
       </div>
 
       {loading ? (

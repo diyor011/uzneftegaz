@@ -94,22 +94,22 @@
       ]
     },
     {
-      "title": "kasaba uyishmasi",
+      "title": "Kasaba uyishmasi",
       "items": [
         {
-          "label": "meyoriy xujatlar",
+          "label": "Me'yoriy hujjatlar",
           "path": "/organized/document"
         },
         {
-          "label": "yangiliklar",
+          "label": "Yangiliklar",
           "path": "organized/news"
         },
         {
-          "label": "tadbirlar",
+          "label": "Tadbirlar",
           "path": "organized/events"
         },
         {
-          "label": "xodimlarni qollap quvatlash",
+          "label": "Xodimlarni qo'llab-quvvatlash",
           "path": "organized/staffhelp"
         }
       ]

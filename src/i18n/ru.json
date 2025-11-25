@@ -94,22 +94,22 @@
       ]
     },
     {
-      "title": "профсоюз",
+      "title": "Профсоюз",
       "items": [
         {
-          "label": "нормативные документы",
+          "label": "Нормативные документы",
           "path": "/organized/document"
         },
         {
-          "label": "новости",
+          "label": "Новости",
           "path": "organized/news"
         },
         {
-          "label": "мероприятия",
+          "label": "Мероприятия",
           "path": "organized/events"
         },
         {
-          "label": "поддержка сотрудников",
+          "label": "Поддержка сотрудников",
           "path": "organized/staffhelp"
         }
       ]
