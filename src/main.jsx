@@ -27,6 +27,7 @@ import OrganizedDocument from "./pages/organized/Document.jsx";
 import OrganizedNews from "./pages/organized/News.jsx";
 import OrganizedEvents from "./pages/organized/Events.jsx";
 import OrganizedStaff from "./pages/organized/Staffhelp.jsx";
+import BookPage from "./pages/Book.jsx";
 
 const router = createBrowserRouter([
   {
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
         {
         path: "/organized/staffhelp",
         element: <OrganizedStaff />,
+      },
+         {
+        path: "/book",
+        element: <BookPage />,
       },
     ],
   },
