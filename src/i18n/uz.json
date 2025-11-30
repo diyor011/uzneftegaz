@@ -166,6 +166,9 @@
     "sport": "Sport",
     "culture": "Madaniyat",
     "va": "va",
-    "back": "Ortga"
+    "back": "Ortga",
+    "support": "Xodimlarni qo‘llab-quvvatlash",
+    "all" : "  Barchasi",
+    "event" : "Tadbirlar"
   }
 }

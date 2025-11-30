@@ -8,10 +8,12 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useTranslation } from "react-i18next";
 
 export default function EventsPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+      const { t } = useTranslation();
 
   const lang = useSelector((state) => state.language.lang || "uz");
 
@@ -54,7 +56,7 @@ export default function EventsPage() {
     <div className="min-h-screen max-w-[90%] mx-auto px-6">
       <div className="flex items-center gap-2 mt-8 mb-12">
         <img src={logo} alt="logo" />
-        <h2 className="text-4xl font-bold text-info">Tadbirlar</h2>
+        <h2 className="text-4xl font-bold text-info">{t("home.event")}</h2>
       </div>
 
       {/* FILTERS */}
@@ -67,7 +69,7 @@ export default function EventsPage() {
               : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
           >
-            Barchasi
+            {t("home.all")}
           </button>
 
           {uniqueCategories.map((cat) => (
