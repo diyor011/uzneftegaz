@@ -4,10 +4,13 @@ import AboutUs from '../components/AboutUs'
 import NewsCard from '../components/NewsCard'
 import logo from "../assets/minLogo.png"
 import { useTranslation } from 'react-i18next'
+import Footer from '../components/Footer'
 
 const Home = () => {
-        const { t } = useTranslation();
+    const { t } = useTranslation();
     return (
+        <div>
+
         <div className='mx-auto max-w-[90%]'>
             <Banner />
 
@@ -34,7 +37,12 @@ const Home = () => {
             <NewsCard />
 
 
+
+
         </div>
+            <Footer />
+        </div>
+
     )
 }
 
