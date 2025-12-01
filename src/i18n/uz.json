@@ -22,6 +22,10 @@
         {
           "label": "Bo‘sh ish o‘rinlari",
           "path": "/about/vacancies"
+        },
+          {
+          "label": "OAV Nigox",
+          "path": "/telecanal"
         }
       ]
     },
@@ -177,6 +181,7 @@
     "footer_about_text_1": "Bugungi kunda xizmatlarimiz O'zbekistonda keng qo'llanilmoqda.",
     "footer_about_text_2": "Bizning platformamiz sizga qulaylik va sifatli xizmatlarni taqdim etadi.",
     "footer_about_text_3": "Sayt xalqaro mavzularga bag'ishlangan bo'lib, sifatli ma'lumotlarni yetkazib beradi.",
-    "footer_social_title": "Ijtimoiy tarmoqlarimiz"
+    "footer_social_title": "Ijtimoiy tarmoqlarimiz",
+    "telecanal" : "OAV Nigoxi"
   }
 }

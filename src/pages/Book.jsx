@@ -2,15 +2,27 @@ import React, { useState } from 'react';
 import { Download, BookOpen } from 'lucide-react';
 
 export default function BookPage() {
-  const [book] = useState({
-    title: "O'zbek Adabiyoti Tarixidan",
-    author: "Alisher Navoiy",
-    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
-    description: "Bu kitob o'zbek adabiyotining boy tarixini, uning rivojlanish bosqichlarini va mashhur shoirlar ijodini o'rganish uchun mo'ljallangan. Kitobda klassik va zamonaviy adabiyot namunalari, she'rlar va hikoyalar to'plangan. O'zbek tilining go'zalligi va san'at asarlarining chuqurligi bu kitobda o'z aksini topgan.",
-    pages: 450,
-    year: 2024,
-    pdfUrl: "#"
-  });
+  // const [book] = useState({
+  //   title: "O'zbek Adabiyoti Tarixidan",
+  //   author: "Alisher Navoiy",
+  //   image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
+  //   description: "Bu kitob o'zbek adabiyotining boy tarixini, uning rivojlanish bosqichlarini va mashhur shoirlar ijodini o'rganish uchun mo'ljallangan. Kitobda klassik va zamonaviy adabiyot namunalari, she'rlar va hikoyalar to'plangan. O'zbek tilining go'zalligi va san'at asarlarining chuqurligi bu kitobda o'z aksini topgan.",
+  //   pages: 450,
+  //   year: 2024,
+  //   pdfUrl: "#"
+  // });
+  const [book, setBook] = useState([])
+
+  const Getbook = async () => {
+    try {
+
+      const response = await fetch('https://uzneftegaz-backend-production.up.railway.app/api/books')
+      const data = response.json()
+      setBook(data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   const handleDownload = () => {
     // PDF yuklab olish funksiyasi
@@ -21,12 +33,13 @@ export default function BookPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-0">
+        {book.map(item => (
+            <div key={item._id} className="grid md:grid-cols-2 gap-0">
             {/* Rasm qismi */}
             <div className="bg-info p-8 flex items-center justify-center">
               <div className="relative">
-                <img 
-                  src={book.image} 
+                <img
+                  src={book.image}
                   alt={book.title}
                   className="rounded-2xl shadow-xl w-full max-w-sm object-cover"
                 />
@@ -82,9 +95,10 @@ export default function BookPage() {
               </p>
             </div>
           </div>
+        ))}
         </div>
 
-   
+
       </div>
     </div>
   );

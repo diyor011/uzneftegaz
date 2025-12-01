@@ -28,6 +28,7 @@ import OrganizedNews from "./pages/organized/News.jsx";
 import OrganizedEvents from "./pages/organized/Events.jsx";
 import OrganizedStaff from "./pages/organized/Staffhelp.jsx";
 import BookPage from "./pages/Book.jsx";
+import Telecanal from "./pages/about/Telecanal.jsx"
 
 const router = createBrowserRouter([
   {
@@ -126,6 +127,10 @@ const router = createBrowserRouter([
          {
         path: "/book",
         element: <BookPage />,
+      },
+         {
+        path: "/telecanal",
+        element: < Telecanal/>,
       },
     ],
   },
