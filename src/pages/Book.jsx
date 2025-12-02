@@ -1,62 +1,112 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Download, BookOpen } from 'lucide-react';
+import { useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 export default function BookPage() {
-  // const [book] = useState({
-  //   title: "O'zbek Adabiyoti Tarixidan",
-  //   author: "Alisher Navoiy",
-  //   image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop",
-  //   description: "Bu kitob o'zbek adabiyotining boy tarixini, uning rivojlanish bosqichlarini va mashhur shoirlar ijodini o'rganish uchun mo'ljallangan. Kitobda klassik va zamonaviy adabiyot namunalari, she'rlar va hikoyalar to'plangan. O'zbek tilining go'zalligi va san'at asarlarining chuqurligi bu kitobda o'z aksini topgan.",
-  //   pages: 450,
-  //   year: 2024,
-  //   pdfUrl: "#"
-  // });
+
   const [book, setBook] = useState([])
+  const lang = useSelector((state) => state.language.lang);
 
   const Getbook = async () => {
     try {
-
       const response = await fetch('https://uzneftegaz-backend-production.up.railway.app/api/books')
-      const data = response.json()
-      setBook(data)
+      const data = await response.json()
+      setBook(data.book)
     } catch (err) {
       console.error(err)
     }
   }
 
+  useEffect(() => {
+    Getbook()
+  }, [])
+
   const handleDownload = () => {
-    // PDF yuklab olish funksiyasi
     alert("PDF yuklab olinmoqda...");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-orange-50 py-12 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+    <div className="min-h-screen mx-auto max-w-[90%] py-12 px-4">
+      <div className="flex flex-col gap-8">
         {book.map(item => (
-            <div key={item._id} className="grid md:grid-cols-2 gap-0">
-            {/* Rasm qismi */}
-            <div className="bg-info p-8 flex items-center justify-center">
-              <div className="relative">
-                <img
-                  src={book.image}
-                  alt={book.title}
-                  className="rounded-2xl shadow-xl w-full max-w-sm object-cover"
-                />
-                <div className="absolute -bottom-4 -right-4 bg-orange-400 rounded-full p-4 shadow-lg">
-                  <BookOpen className="w-8 h-8 text-white" />
-                </div>
+          <div key={item._id} className="grid md:grid-cols-2 gap-0 rounded-3xl shadow-2xl overflow-hidden bg-white">
+          
+            <div className="flex items-center justify-center">
+              <div className="relative w-full ">
+                {item.mediaType?.length > 0 ? (
+                  item.mediaType.length === 1 ? (
+                    // Bitta media
+                    item.mediaType[0].type === "video" ? (
+                      <video
+                        src={item.mediaType[0].url}
+                        className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+                        controls
+                      />
+                    ) : (
+                      <img
+                        src={item.mediaType[0].url}
+                        alt="media"
+                        className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+                      />
+                    )
+                  ) : (
+                    // Ko'p media - Swiper
+                    <Swiper
+                      modules={[Autoplay, Pagination]}
+                      spaceBetween={10}
+                      slidesPerView={1}
+                      autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                      }}
+                      pagination={{ clickable: true }}
+                      loop={true}
+                      className="w-full h-[400px] rounded-2xl shadow-xl"
+                    >
+                      {item.mediaType
+                        .filter(m => m.type === "image" || m.type === "video")
+                        .map((m, index) => (
+                          <SwiperSlide key={index}>
+                            {m.type === "video" ? (
+                              <video
+                                src={m.url}
+                                className="w-full h-full object-cover"
+                                controls
+                              />
+                            ) : (
+                              <img
+                                src={m.url}
+                                alt={`media-${index}`}
+                                className="w-full h-full object-cover"
+                              />
+                            )}
+                          </SwiperSlide>
+                        ))}
+                    </Swiper>
+                  )
+                ) : (
+                  // Media yo'q bo'lsa
+                  <div className="w-full h-[400px] bg-gray-200 rounded-2xl flex items-center justify-center shadow-xl">
+                    <p className="text-gray-400 text-lg">No Media</p>
+                  </div>
+                )}
+
+               
               </div>
             </div>
 
             {/* Ma'lumot qismi */}
-            <div className="p-8 md:p-12 flex flex-col justify-center">
+            <div className="p-8 md:p-12 flex flex-col justify-center h-[400px]">
               <div className="mb-6">
                 <h1 className="text-4xl font-bold text-gray-800 mb-3">
-                  {book.title}
+                  {item.title?.[lang]}
                 </h1>
                 <p className="text-xl text-orange-400 font-semibold">
-                  {book.author}
+                  {item.avtor?.[lang]}
                 </p>
               </div>
 
@@ -66,18 +116,18 @@ export default function BookPage() {
                   Kitob haqida
                 </h2>
                 <p className="text-gray-600 leading-relaxed">
-                  {book.description}
+                  {item.description?.[lang]}
                 </p>
               </div>
 
               <div className="flex gap-6 mb-8">
                 <div className="bg-blue-50 px-6 py-3 rounded-lg">
                   <p className="text-sm text-gray-500">Sahifalar</p>
-                  <p className="text-2xl font-bold text-info">{book.pages}</p>
+                  <p className="text-2xl font-bold text-blue-600">{item.pages}</p>
                 </div>
                 <div className="bg-orange-50 px-6 py-3 rounded-lg">
                   <p className="text-sm text-gray-500">Yil</p>
-                  <p className="text-2xl font-bold text-orange-400">{book.year}</p>
+                  <p className="text-2xl font-bold text-orange-400">{item.year}</p>
                 </div>
               </div>
 
@@ -90,15 +140,10 @@ export default function BookPage() {
                 PDF yuklab olish
               </button>
 
-              <p className="text-sm text-gray-500 mt-4 text-center">
-                PDF formatida yuqori sifatli kitob
-              </p>
+           
             </div>
           </div>
         ))}
-        </div>
-
-
       </div>
     </div>
   );
