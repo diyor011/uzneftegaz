@@ -33,24 +33,24 @@ export default function BookPage() {
     <div className="min-h-screen mx-auto max-w-[90%] py-12 px-4">
       <div className="flex flex-col gap-8">
         {book.map(item => (
-          <div key={item._id} className="grid md:grid-cols-2 gap-0 rounded-3xl shadow-2xl overflow-hidden bg-white">
+          <div key={item._id} className="grid md:grid-cols-2 gap-0 rounded-3xl shadow-2xl overflow-hidden bg-white h-full">
           
             <div className="flex items-center justify-center">
-              <div className="relative w-full ">
+              <div className="relative w-full h-full ">
                 {item.mediaType?.length > 0 ? (
                   item.mediaType.length === 1 ? (
                     // Bitta media
                     item.mediaType[0].type === "video" ? (
                       <video
                         src={item.mediaType[0].url}
-                        className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+                        className="w-full  object-cover rounded-2xl shadow-xl"
                         controls
                       />
                     ) : (
                       <img
                         src={item.mediaType[0].url}
                         alt="media"
-                        className="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+                        className="w-full  object-cover rounded-2xl shadow-xl"
                       />
                     )
                   ) : (
@@ -65,7 +65,7 @@ export default function BookPage() {
                       }}
                       pagination={{ clickable: true }}
                       loop={true}
-                      className="w-full h-[400px] rounded-2xl shadow-xl"
+                      className="w-full  rounded-2xl shadow-xl"
                     >
                       {item.mediaType
                         .filter(m => m.type === "image" || m.type === "video")
@@ -74,7 +74,7 @@ export default function BookPage() {
                             {m.type === "video" ? (
                               <video
                                 src={m.url}
-                                className="w-full h-full object-cover"
+                                className="w-full object-cover"
                                 controls
                               />
                             ) : (
@@ -100,7 +100,7 @@ export default function BookPage() {
             </div>
 
             {/* Ma'lumot qismi */}
-            <div className="p-8 md:p-12 flex flex-col justify-center h-[400px]">
+            <div className="p-8 md:p-12 flex flex-col justify-center ">
               <div className="mb-6">
                 <h1 className="text-4xl font-bold text-gray-800 mb-3">
                   {item.title?.[lang]}

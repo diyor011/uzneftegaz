@@ -90,26 +90,7 @@ export default function AboutUs() {
                     </div>
                 </div>
 
-                {/* Mission & Vision */}
-                <div data-aos="fade-up" className="grid md:grid-cols-2 gap-12 mb-20">
-                    <div className="bg-gradient-to-br bg-info p-10 rounded-3xl text-white">
-                        <h3 className="text-3xl font-bold mb-4">Missiyamiz</h3>
-                        <p className="text-lg leading-relaxed opacity-90">
-                            Mijozlarimizga eng yaxshi xizmat ko'rsatish va ularning
-                            biznes maqsadlariga erishishda ishonchli hamkor bo'lish.
-                            Biz sifat, innovatsiya va samaradorlikka e'tibor qaratamiz.
-                        </p>
-                    </div>
-
-                    <div data-aos="fade-up" className=" bg-orange-400  p-10 rounded-3xl text-white">
-                        <h3 className="text-3xl font-bold mb-4">Viziyamiz</h3>
-                        <p className="text-lg leading-relaxed opacity-90">
-                            Texnologiya va ijodkorlikning uyg'unligida eng yaxshi
-                            yechimlar yaratuvchi yetakchi kompaniya bo'lish.
-                            Har bir loyihada yangi standartlar o'rnatish.
-                        </p>
-                    </div>
-                </div>
+            
 
                 {/* Values */}
                 <div data-aos="fade-up" className="">
