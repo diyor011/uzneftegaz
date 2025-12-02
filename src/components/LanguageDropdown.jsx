@@ -53,7 +53,7 @@ export default function LanguageDropdown() {
           <ul className="py-2 text-sm">
             <li
               className="px-4 py-2 cursor-pointer hover:text-[#00A2DE]"
-              onClick={() => changeLanguage("oz", "Ўзбекча")}
+              onClick={() => changeLanguage("uz", "Ўзбекча")}
             >
               Ўзбекча
             </li>
@@ -65,7 +65,7 @@ export default function LanguageDropdown() {
             </li>
             <li
               className="px-4 py-2 cursor-pointer hover:text-[#00A2DE]"
-              onClick={() => changeLanguage("uz", "Ozbekcha")}
+              onClick={() => changeLanguage("oz", "Ozbekcha")}
             >
               Ozbekcha
             </li>

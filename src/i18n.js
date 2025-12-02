@@ -8,9 +8,9 @@ const savedLang = localStorage.getItem("lang") || "oz";
 
 i18n.use(initReactI18next).init({
   resources: {
-    uz: { translation: uz },
+    oz: { translation: uz },
     ru: { translation: ru },
-    oz: { translation: oz },
+    uz: { translation: oz },
   },
   lng: savedLang,
   fallbackLng: "oz",
