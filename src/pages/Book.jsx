@@ -25,8 +25,12 @@ export default function BookPage() {
     Getbook()
   }, [])
 
-  const handleDownload = () => {
-    alert("PDF yuklab olinmoqda...");
+  const handleDownload = (pdfUrl) => {
+    if (pdfUrl) {
+      window.open(pdfUrl, '_blank');
+    } else {
+      alert("PDF fayl topilmadi");
+    }
   };
 
   return (
@@ -36,71 +40,54 @@ export default function BookPage() {
           <div key={item._id} className="grid md:grid-cols-2 gap-0 rounded-3xl shadow-2xl overflow-hidden bg-white h-full">
           
             <div className="flex items-center justify-center">
-              <div className="relative w-full h-full ">
+              <div className="relative w-full h-full">
                 {item.mediaType?.length > 0 ? (
                   item.mediaType.length === 1 ? (
-                    // Bitta media
-                    item.mediaType[0].type === "video" ? (
-                      <video
-                        src={item.mediaType[0].url}
-                        className="w-full  object-cover rounded-2xl shadow-xl"
-                        controls
-                      />
-                    ) : (
-                      <img
-                        src={item.mediaType[0].url}
-                        alt="media"
-                        className="w-full  object-cover rounded-2xl shadow-xl"
-                      />
-                    )
+                    // Bitta rasm
+                    <img
+                      src={item.mediaType[0].url}
+                      alt="media"
+                      className="w-full h-full object-cover"
+                    />
                   ) : (
-                    // Ko'p media - Swiper
+                    // Ko'p rasm - Swiper
                     <Swiper
                       modules={[Autoplay, Pagination]}
-                      spaceBetween={10}
+                      spaceBetween={0}
                       slidesPerView={1}
                       autoplay={{
                         delay: 3000,
                         disableOnInteraction: false,
                       }}
-                      pagination={{ clickable: true }}
+                      pagination={{ 
+                        clickable: true,
+                        dynamicBullets: true,
+                      }}
                       loop={true}
-                      className="w-full  rounded-2xl shadow-xl"
+                      className="w-full h-full"
                     >
-                      {item.mediaType
-                        .filter(m => m.type === "image" || m.type === "video")
-                        .map((m, index) => (
-                          <SwiperSlide key={index}>
-                            {m.type === "video" ? (
-                              <video
-                                src={m.url}
-                                className="w-full object-cover"
-                                controls
-                              />
-                            ) : (
-                              <img
-                                src={m.url}
-                                alt={`media-${index}`}
-                                className="w-full h-full object-cover"
-                              />
-                            )}
-                          </SwiperSlide>
-                        ))}
+                      {item.mediaType.map((m, index) => (
+                        <SwiperSlide key={index}>
+                          <img
+                            src={m.url}
+                            alt={`media-${index}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </SwiperSlide>
+                      ))}
                     </Swiper>
                   )
                 ) : (
                   // Media yo'q bo'lsa
-                  <div className="w-full h-[400px] bg-gray-200 rounded-2xl flex items-center justify-center shadow-xl">
-                    <p className="text-gray-400 text-lg">No Media</p>
+                  <div className="w-full h-[400px] bg-gray-200 flex items-center justify-center">
+                    <p className="text-gray-400 text-lg">Rasm yo'q</p>
                   </div>
                 )}
-
-               
               </div>
             </div>
 
             {/* Ma'lumot qismi */}
-            <div className="p-8 md:p-12 flex flex-col justify-center ">
+            <div className="p-8 md:p-12 flex flex-col justify-center">
               <div className="mb-6">
                 <h1 className="text-4xl font-bold text-gray-800 mb-3">
                   {item.title?.[lang]}
@@ -133,14 +120,12 @@ export default function BookPage() {
 
               {/* PDF yuklab olish tugmasi */}
               <button
-                onClick={handleDownload}
+                onClick={() => handleDownload(item.mediaDocs?.[0]?.url)}
                 className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg transform transition-all hover:scale-105 flex items-center justify-center gap-3"
               >
                 <Download className="w-6 h-6" />
                 PDF yuklab olish
               </button>
-
-           
             </div>
           </div>
         ))}
