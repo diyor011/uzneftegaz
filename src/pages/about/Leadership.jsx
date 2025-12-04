@@ -22,7 +22,7 @@ const Leadership = () => {
         `https://uzneftegaz-backend-production.up.railway.app/api/leader`
       );
       const data = await response.json();
-      Setdata(data.leaders);
+      Setdata(data.leaders.reverse());
       console.log(data.leaders);
       if (!response.ok) {
         throw new Error(response.status);
