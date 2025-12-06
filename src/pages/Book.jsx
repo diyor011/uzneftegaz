@@ -38,52 +38,62 @@ export default function BookPage() {
       <div className="flex flex-col gap-8">
         {book.map(item => (
           <div key={item._id} className="grid md:grid-cols-2 gap-0 rounded-3xl shadow-2xl overflow-hidden bg-white h-full">
-          
+
             <div className="flex items-center justify-center">
-              <div className="relative w-full h-full">
-                {item.mediaType?.length > 0 ? (
-                  item.mediaType.length === 1 ? (
-                    // Bitta rasm
-                    <img
-                      src={item.mediaType[0].url}
-                      alt="media"
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    // Ko'p rasm - Swiper
+              <div className="w-full h-full">
+
+                {/* mediaType borligini tekshiramiz */}
+                {item.mediaType ? (
+
+                  /* Agar mediaType array bo'lsa → SWIPER */
+                  Array.isArray(item.mediaType) ? (
                     <Swiper
                       modules={[Autoplay, Pagination]}
-                      spaceBetween={0}
-                      slidesPerView={1}
-                      autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                      }}
-                      pagination={{ 
-                        clickable: true,
-                        dynamicBullets: true,
-                      }}
+                      autoplay={{ delay: 3000, disableOnInteraction: false }}
+                      pagination={{ clickable: true }}
                       loop={true}
-                      className="w-full h-full"
                     >
-                      {item.mediaType.map((m, index) => (
-                        <SwiperSlide key={index}>
+                      {item.mediaType.map((media, idx) => (
+                        <SwiperSlide key={idx}>
                           <img
-                            src={m.url}
-                            alt={`media-${index}`}
+                            src={media.url}
+                            alt="kitob rasm"
                             className="w-full h-full object-cover"
                           />
                         </SwiperSlide>
                       ))}
                     </Swiper>
+                  ) : (
+
+                    /* Agar mediaType object bo'lsa → TYPE bo'yicha rasm chiqaramiz */
+                    item.mediaType.type?.includes("image") ? (
+                      <img
+                        src={item.mediaType.url}
+                        alt="kitob rasm"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : item.mediaType.type?.includes("video") ? (
+                      <video
+                        controls
+                        className="w-full h-full object-cover"
+                      >
+                        <source src={item.mediaType.url} type={item.mediaType.type} />
+                      </video>
+                    ) : (
+                      <div className="w-full h-[300px] bg-gray-300 flex items-center justify-center">
+                        Format qo‘llab-quvvatlanmaydi
+                      </div>
+                    )
                   )
+
                 ) : (
-                  // Media yo'q bo'lsa
-                  <div className="w-full h-[400px] bg-gray-200 flex items-center justify-center">
-                    <p className="text-gray-400 text-lg">Rasm yo'q</p>
+                  <div className="w-full h-[300px] bg-gray-200 flex items-center justify-center">
+                    <p className="text-gray-400">Rasm mavjud emas</p>
                   </div>
                 )}
+
               </div>
+
             </div>
 
             {/* Ma'lumot qismi */}

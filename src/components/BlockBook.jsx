@@ -43,7 +43,7 @@ const BooksBlock = ({ onBookClick, onViewAll }) => {
         <div className="mb-16">
             {/* Asosiy kitob kartochkasi */}
             <Link
-                 to={"Book"}   
+                to={"Book"}
                 className="bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer"
             >
                 <div className="flex flex-col md:flex-row">
@@ -51,15 +51,15 @@ const BooksBlock = ({ onBookClick, onViewAll }) => {
                     {/* Rasm qismi */}
                     <div className="md:w-2/5 relative ">
                         <div className="h-64 md:h-full overflow-hidden bg-gray-100">
-                            {latestBook.mediaType?.length > 0 ? (
-                                latestBook.mediaType[0].type === "video" ? (
+                            {latestBook.mediaType ? (
+                                latestBook.mediaType.type === "video" ? (
                                     <video
-                                        src={latestBook.mediaType[0].url}
+                                        src={latestBook.mediaType.url}
                                         className="w-full h-full object-cover"
                                     />
                                 ) : (
                                     <img
-                                        src={latestBook.mediaType[0].url}
+                                        src={latestBook.mediaType.url}
                                         alt={latestBook.title?.[lang]}
                                         className="w-full h-full object-cover"
                                     />
@@ -114,7 +114,7 @@ const BooksBlock = ({ onBookClick, onViewAll }) => {
 
             {/* Barcha kitoblarni ko'rish tugmasi */}
             <div className="mt-6 text-center">
-                
+
                 <Link
                     to={'Book'}
                     onClick={() => onViewAll && onViewAll()}
