@@ -3,6 +3,7 @@ import { Download, BookOpen } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { toast, ToastContainer } from 'react-toastify';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -25,11 +26,34 @@ export default function BookPage() {
     Getbook()
   }, [])
 
-  const handleDownload = (pdfUrl) => {
-    if (pdfUrl) {
-      window.open(pdfUrl, '_blank');
-    } else {
-      alert("PDF fayl topilmadi");
+  const handleDownload = async (fileUrl) => {
+    if (!fileUrl) {
+      toast.error("PDF fayl mavjud emas!");
+      return;
+    }
+
+    try {
+      const response = await fetch(fileUrl);
+      if (!response.ok) {
+        toast.error("Fayl topilmadi: " + response.status)
+        throw new Error("Fayl topilmadi");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      // Fayl nomini URL dan olish
+      const fileName = fileUrl.split('/').pop();
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      a.click();
+
+      window.URL.revokeObjectURL(url);
+      toast.success("Fayl yuklab olindi!");
+    } catch (err) {
+      toast.error("Yuklab olishda xatolik: " + err.message);
     }
   };
 
@@ -42,50 +66,26 @@ export default function BookPage() {
             <div className="flex items-center justify-center">
               <div className="w-full h-full">
 
-                {/* mediaType borligini tekshiramiz */}
+                {/* mediaType endi object */}
                 {item.mediaType ? (
-
-                  /* Agar mediaType array bo'lsa → SWIPER */
-                  Array.isArray(item.mediaType) ? (
-                    <Swiper
-                      modules={[Autoplay, Pagination]}
-                      autoplay={{ delay: 3000, disableOnInteraction: false }}
-                      pagination={{ clickable: true }}
-                      loop={true}
+                  item.mediaType.type?.includes("image") ? (
+                    <img
+                      src={item.mediaType.url}
+                      alt="kitob rasm"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : item.mediaType.type?.includes("video") ? (
+                    <video
+                      controls
+                      className="w-full h-full object-cover"
                     >
-                      {item.mediaType.map((media, idx) => (
-                        <SwiperSlide key={idx}>
-                          <img
-                            src={media.url}
-                            alt="kitob rasm"
-                            className="w-full h-full object-cover"
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
+                      <source src={item.mediaType.url} type={item.mediaType.type} />
+                    </video>
                   ) : (
-
-                    /* Agar mediaType object bo'lsa → TYPE bo'yicha rasm chiqaramiz */
-                    item.mediaType.type?.includes("image") ? (
-                      <img
-                        src={item.mediaType.url}
-                        alt="kitob rasm"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : item.mediaType.type?.includes("video") ? (
-                      <video
-                        controls
-                        className="w-full h-full object-cover"
-                      >
-                        <source src={item.mediaType.url} type={item.mediaType.type} />
-                      </video>
-                    ) : (
-                      <div className="w-full h-[300px] bg-gray-300 flex items-center justify-center">
-                        Format qo‘llab-quvvatlanmaydi
-                      </div>
-                    )
+                    <div className="w-full h-[300px] bg-gray-300 flex items-center justify-center">
+                      Format qo'llab-quvvatlanmaydi
+                    </div>
                   )
-
                 ) : (
                   <div className="w-full h-[300px] bg-gray-200 flex items-center justify-center">
                     <p className="text-gray-400">Rasm mavjud emas</p>
@@ -128,18 +128,29 @@ export default function BookPage() {
                 </div>
               </div>
 
-              {/* PDF yuklab olish tugmasi */}
-              <button
-                onClick={() => handleDownload(item.mediaDocs?.[0]?.url)}
-                className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg transform transition-all hover:scale-105 flex items-center justify-center gap-3"
-              >
-                <Download className="w-6 h-6" />
-                PDF yuklab olish
-              </button>
+              {/* PDF yuklab olish tugmasi - mediaDocs endi object */}
+              {item.mediaDocs ? (
+                <button
+                  onClick={() => handleDownload(item.mediaDocs.url)}
+                  className="bg-orange-400 hover:bg-orange-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg transform transition-all hover:scale-105 flex items-center justify-center gap-3"
+                >
+                  <Download className="w-6 h-6" />
+                  PDF yuklab olish
+                </button>
+              ) : (
+                <button
+                  disabled
+                  className="bg-gray-300 text-gray-500 font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-3 cursor-not-allowed"
+                >
+                  <Download className="w-6 h-6" />
+                  PDF mavjud emas
+                </button>
+              )}
             </div>
           </div>
         ))}
       </div>
+      <ToastContainer />
     </div>
   );
 }
