@@ -65,7 +65,8 @@ export default function Footer() {
                             {t("home.footer_social_title")}
                         </h4>
 
-                        <div className="flex gap-4">
+                        <div className='flex flex-col gap-4 items-center'>
+                              <div className="flex gap-4">
                             <a href="#" className="text-white hover:text-white/80 transition-colors">
                                 <Send className="w-5 h-5" />
                             </a>
@@ -84,6 +85,8 @@ export default function Footer() {
                             <a href="#" className="text-white hover:text-white/80 transition-colors">
                                 <Mail className="w-5 h-5" />
                             </a>
+                        </div>
+                        <h2 className='text-xl text-white'> +998700140123</h2>
                         </div>
                     </div>
 

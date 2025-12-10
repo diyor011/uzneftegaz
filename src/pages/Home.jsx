@@ -19,6 +19,8 @@ const Home = () => {
     return (
         <div>
             <div className='mx-auto max-w-[90%]'>
+              
+
                 <Banner />
 
                 <div>
